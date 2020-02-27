@@ -6,7 +6,7 @@
 #    By: Elena <Elena@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/26 14:57:13 by frenna            #+#    #+#              #
-#    Updated: 2020/02/27 14:07:50 by Elena            ###   ########.fr        #
+#    Updated: 2020/02/27 14:17:40 by Elena            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,6 @@ SRC_NAMES = old_lem.c \
 	ft_pr_f.c \
 	bfs.c \
 	dfs.c \
-	ft_memset.c \
 	imin.c \
 	ft_dub.c \
 	ft_undub.c \

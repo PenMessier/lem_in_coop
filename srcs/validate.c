@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 13:03:48 by frenna            #+#    #+#             */
-/*   Updated: 2020/02/27 11:02:46 by Elena            ###   ########.fr       */
+/*   Updated: 2020/02/27 15:02:18 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void				valid_link(char *input, t_meta *map)
 
 	if (!(mi = valid_line_link(input)))
 	{
-		free(input);
+		free(input ? input : NULL);
 		put_error(map, 1);
 	}
 	t = ft_strsplit(input, '-');
@@ -79,7 +79,7 @@ void				valid_link(char *input, t_meta *map)
 		|| !(end = find_room(map->rooms, t[1])))
 	{
 		ft_free_array(t, 1);
-		free(input);
+		free(input ? input : NULL);
 		put_error(map, EINVAL);
 	}
 	else
@@ -102,14 +102,14 @@ void				valid_room(char *input, t_meta *map, int *nl)
 		}
 		else
 		{
-			free(input);
+			free(input ? input : NULL);
 			put_error(map, EINVAL);
 		}
 	}
 	if (!add_room(create_new_room(x, y, input, li),
 		map, nl))
 	{
-		free(input);
+		free(input ? input : NULL);
 		put_error(map, 1);
 	}
 }

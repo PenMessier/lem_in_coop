@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 15:34:30 by frenna            #+#    #+#             */
-/*   Updated: 2020/02/27 12:55:13 by Elena            ###   ########.fr       */
+/*   Updated: 2020/02/27 15:13:57 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void 			input(t_meta *all)
 
 	i = 0;
 	curr = all->links;
-	all->room_count = count_index_rooms(&all->rooms);
 	all->n = all->room_count;
 	all->s = all->start->i;
 	all->t = all->end->i;

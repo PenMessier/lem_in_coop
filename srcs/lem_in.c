@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:19:18 by Elena             #+#    #+#             */
-/*   Updated: 2020/02/27 12:15:28 by Elena            ###   ########.fr       */
+/*   Updated: 2020/02/27 15:11:37 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@ static void	init_meta(t_meta *map)
 {
 	map->rooms = NULL;
 	map->links = NULL;
+	map->start = NULL;
+	map->end = NULL;
+	map->c = 0;
+	map->f = 0;
+	map->d = 0;
+	map->ptr = 0;
+	map->q = 0;
 }
 
 int			main(int ac, char **av)
@@ -35,8 +42,9 @@ int			main(int ac, char **av)
 			if (nl == -1)
 				put_error(&lemin, 1);
 		}
+		lemin.room_count = count_index_rooms(lemin.rooms);
+		print_input(lemin);
 		find_paths(&lemin);
-		//print_input(lemin);
 		free_struct(&lemin);
 	}
 	av = 0;
