@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 14:58:30 by frenna            #+#    #+#             */
-/*   Updated: 2020/02/26 16:15:14 by frenna           ###   ########.fr       */
+/*   Updated: 2020/02/27 13:47:53 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,28 +42,29 @@ typedef struct		s_meta
 	t_room			*start;
 	t_room			*end;
 	t_link			*links;
-	int				ant_count;
-	int				n;
-	int				*c;
-	int     		*f;
+	int					ant_count;
+	int					n;
 	int     		s;
 	int     		t;
+	int					*c;
+	int     		*f;
 	int     		*d;
 	int     		*ptr;
 	int     		*q;
-	int				maxn;
+	int				room_count;
 }					t_meta;
 
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_pr_f(t_meta *all);
-void			input(t_meta *all, int maxn);
+void			input(t_meta *all);
 int				imin(int a, int b);
-int				bfs(t_meta *all);
-int				dfs (int v, int flow, t_meta *all);
+int				bfs(t_meta *dub);
+int				dfs (int v, int flow, t_meta *dub);
 int				dinic(t_meta *all);
 void			ft_dub(t_meta *all, t_meta *dub);
 void    		ft_undub(t_meta *all, t_meta *dub);
 void			tf_nodewae(t_meta *all, int *wae, int nom);
+void				find_paths(t_meta *all);
 
 /*
 ** Parse input
@@ -93,6 +94,7 @@ void				put_error(t_meta *map, int r);
 t_room				*create_new_room(int x, int y, char *name, int li);
 int					add_room(t_room *new, t_meta *map, int *nl);
 t_room				*find_room(t_room *rooms, char *name);
+int					count_index_rooms(t_room **rooms);
 
 int					add_link(t_link **links, t_room *start, t_room *end);
 

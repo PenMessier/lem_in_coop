@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   room_struct_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 12:14:32 by frenna            #+#    #+#             */
-/*   Updated: 2020/02/26 16:14:21 by frenna           ###   ########.fr       */
+/*   Updated: 2020/02/27 11:05:45 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,20 @@ t_room		*find_room(t_room *rooms, char *name)
 		rooms = rooms->next;
 	}
 	return NULL;
+}
+
+int		count_index_rooms(t_room **rooms)
+{
+	t_room	*curr;
+	int			i;
+	
+	curr = *rooms;
+	i = 0;
+	while (curr)
+	{
+		curr->i = i;
+		curr = curr->next;
+		i++;
+	}
+	return (i);
 }

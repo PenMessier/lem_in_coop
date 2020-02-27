@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:19:18 by Elena             #+#    #+#             */
-/*   Updated: 2020/02/26 16:16:47 by frenna           ###   ########.fr       */
+/*   Updated: 2020/02/27 12:15:28 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int			main(int ac, char **av)
 			if (nl == -1)
 				put_error(&lemin, 1);
 		}
+		find_paths(&lemin);
 		//print_input(lemin);
 		free_struct(&lemin);
 	}

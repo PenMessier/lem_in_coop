@@ -10,14 +10,14 @@ void    ft_undub(t_meta *all, t_meta *dub)
 	int	fur = 0;
 	int	five = 0;
 
-	for(i = 0; i < all->maxn; i++){
-		for (j = 0; j < all->maxn; j++){
-			one = dub->f[i * 2 * all->maxn * 2 + j  * 2];
-			two = dub->f[i * 2 * all->maxn * 2 + j  * 2 + 1];
-			tri = dub->f[i * 2 * all->maxn * 2 + j  * 2 + all->maxn * 2];
-			fur = dub->f[i * 2 * all->maxn * 2 + j  * 2 + 1 + all->maxn * 2];
+	for(i = 0; i < all->room_count; i++){
+		for (j = 0; j < all->room_count; j++){
+			one = dub->f[i * 2 * all->room_count * 2 + j  * 2];
+			two = dub->f[i * 2 * all->room_count * 2 + j  * 2 + 1];
+			tri = dub->f[i * 2 * all->room_count * 2 + j  * 2 + all->room_count * 2];
+			fur = dub->f[i * 2 * all->room_count * 2 + j  * 2 + 1 + all->room_count * 2];
 			five = one + two + tri + fur;
-			all->f[i * all->maxn + j] = five;
+			all->f[i * all->room_count + j] = five;
 		}
 	}
 }

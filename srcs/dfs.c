@@ -3,32 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   dfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 15:37:01 by frenna            #+#    #+#             */
-/*   Updated: 2020/02/26 16:04:15 by frenna           ###   ########.fr       */
+/*   Updated: 2020/02/27 13:41:56 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem.h"
 
-int     dfs (int v, int flow, t_meta *all)
+int		dfs(int v, int flow, t_meta *dub)
 {
-	int  to;
-        int pushed;
+	int	to;
+  int	pushed;
 
-        if (!flow)  return 0;
-        if (v == all->t)  return flow;
-        to=all->ptr[v];
-	while (to<all->maxn)
+  if (!flow)
+		return 0;
+  if (v == dub->t)
+		return flow;
+  to = dub->ptr[v];
+	while (to < dub->room_count)
 	{
 		to++;
-		if (all->d[to] != all->d[v] + 1)  continue;
-		pushed = dfs (to, imin(flow, all->c[v * all->maxn + to] - all->f[v * all->maxn + to]), all);
+		if (dub->d[to] != dub->d[v] + 1)
+			continue;
+		pushed = dfs(to, imin(flow, dub->c[v * dub->room_count + to] - dub->f[v * dub->room_count + to]), dub);
 		if (pushed)
 		{
-			all->f[v * all->maxn + to] += pushed;
-			all->f[to * all->maxn + v] -= pushed;
+			dub->f[v * dub->room_count + to] += pushed;
+			dub->f[to * dub->room_count + v] -= pushed;
 			return pushed;
 		}
 	}

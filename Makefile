@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: frenna <frenna@student.42.fr>              +#+  +:+       +#+         #
+#    By: Elena <Elena@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/26 14:57:13 by frenna            #+#    #+#              #
-#    Updated: 2020/02/26 16:11:40 by frenna           ###   ########.fr        #
+#    Updated: 2020/02/27 14:07:50 by Elena            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,12 +36,11 @@ OBJ_DIR = obj/
 
 INCLUDES = includes/lem.h
 
-CC = gcc
 FLAGS =  -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME): $(LIB_PATH) $(LIB) $(INCLUDES) $(OBJ_DIR) $(OBJ)
+$(NAME): $(LIB) $(OBJ_DIR) $(OBJ) $(INCLUDES)
 	gcc $(FLAGS) $(LIB_PATH)$(LIB) -I $(INCLUDES) $(OBJ) -o $(NAME)
 
 $(LIB): $(LIB_PATH)

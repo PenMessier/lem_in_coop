@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_res.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 17:03:09 by Elena             #+#    #+#             */
-/*   Updated: 2020/02/26 16:12:29 by frenna           ###   ########.fr       */
+/*   Updated: 2020/02/27 11:07:46 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	print_input(t_meta map)
 			printf("##start\n");
 		else if (p_room->stat == 3)
 			printf("##end\n");
-		printf("%s %d %d\n", p_room->name, p_room->x,  p_room->y);
+		printf("%d %s %d %d\n", p_room->i, p_room->name, p_room->x,  p_room->y);
 		p_room = p_room->next;
 	}
 	while (p_link)
@@ -36,4 +36,5 @@ void	print_input(t_meta map)
 	}
 	printf("start %s\n", (map.start)->name);
 	printf("end %s\n", (map.end)->name);
+	printf("room_count %d\n", map.room_count);
 }

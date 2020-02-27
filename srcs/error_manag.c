@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_manag.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 13:12:45 by frenna            #+#    #+#             */
-/*   Updated: 2020/02/26 16:12:29 by frenna           ###   ########.fr       */
+/*   Updated: 2020/02/27 13:49:08 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	free_links(t_link *links)
 	}
 }
 
-static void	free_paths(t_path *paths)
+/*static void	free_paths(t_path *paths)
 {
 	t_path	*curr;
 
@@ -62,7 +62,7 @@ static void	free_ants(t_ant *ants)
 		free(ants);
 		ants = curr;
 	}
-}
+}*/
 
 void			free_struct(t_meta *map)
 {
@@ -70,10 +70,21 @@ void			free_struct(t_meta *map)
 		free_rooms(map->rooms);
 	if (map && map->links)
 		free_links(map->links);
-	if (map && map->paths)
+	if (map && map->c)
+		free(map->c);
+	if (map && map->f)
+		free(map->f);
+	if (map && map->d)
+		free(map->d);
+	if (map && map->ptr)
+		free(map->ptr);
+	if (map && map->q)
+		free(map->q);
+	/*if (map && map->paths)
 		free_paths(map->paths);
 	if (map && map->ants)
 		free_ants(map->ants);
+		*/
 }
 
 void		put_error(t_meta *map, int r)
