@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 15:37:01 by frenna            #+#    #+#             */
-/*   Updated: 2020/02/27 13:41:56 by Elena            ###   ########.fr       */
+/*   Updated: 2020/02/27 20:25:57 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int		dfs(int v, int flow, t_meta *dub)
   int	pushed;
 
   if (!flow)
-		return 0;
+		return (0);
   if (v == dub->t)
-		return flow;
+		return (flow);
   to = dub->ptr[v];
 	while (to < dub->room_count)
 	{
@@ -32,8 +32,8 @@ int		dfs(int v, int flow, t_meta *dub)
 		{
 			dub->f[v * dub->room_count + to] += pushed;
 			dub->f[to * dub->room_count + v] -= pushed;
-			return pushed;
+			return (pushed);
 		}
 	}
-	return 0;
+	return (0);
 }

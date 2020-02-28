@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:19:18 by Elena             #+#    #+#             */
-/*   Updated: 2020/02/27 15:11:37 by Elena            ###   ########.fr       */
+/*   Updated: 2020/02/27 20:03:25 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int			main(int ac, char **av)
 				put_error(&lemin, 1);
 		}
 		lemin.room_count = count_index_rooms(lemin.rooms);
-		print_input(lemin);
+		//print_input(lemin);
 		find_paths(&lemin);
 		free_struct(&lemin);
 	}

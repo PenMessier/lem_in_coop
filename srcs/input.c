@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 15:34:30 by frenna            #+#    #+#             */
-/*   Updated: 2020/02/27 15:13:57 by Elena            ###   ########.fr       */
+/*   Updated: 2020/02/27 16:20:07 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void 			input(t_meta *all)
 	all->t = all->end->i;
 	all->c = (int *)malloc(all->room_count * all->room_count * sizeof(int));
 	all->f = (int *)malloc(all->room_count * all->room_count * sizeof(int));
-	all->d = (int *)malloc(all->room_count * sizeof(int));
-	all->q = (int *)malloc(all->room_count * sizeof(int));
-	all->ptr = (int *)malloc(all->room_count * sizeof(int));
+	//all->d = (int *)malloc(all->room_count * sizeof(int));
+	//all->q = (int *)malloc(all->room_count * sizeof(int));
+	//all->ptr = (int *)malloc(all->room_count * sizeof(int));
 	while (i < all->room_count * all->room_count)
 	{
 		all->c[i] = 0;

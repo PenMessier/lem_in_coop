@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 15:34:57 by frenna            #+#    #+#             */
-/*   Updated: 2020/02/27 13:51:29 by Elena            ###   ########.fr       */
+/*   Updated: 2020/02/27 20:17:45 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void		ft_dub(t_meta *all, t_meta *dub)
 		{
 			if (all->c[i * all->room_count + j] == 1)
 			{
-				dub->c[(2 * i + 1) * all->room_count * 2 + j * 2] = 1;
-				dub->c[2 * i * all->room_count * 2 + j * 2 + 1] = -1;
+				dub->c[(2 * i + 1) * dub->room_count + j * 2] = 1;
+				dub->c[2 * i * dub->room_count + j * 2 + 1] = -1;
 			}
 			j++;
 		}
