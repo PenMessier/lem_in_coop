@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   old_lem.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
+/*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 15:34:11 by frenna            #+#    #+#             */
-/*   Updated: 2020/02/27 20:03:17 by Elena            ###   ########.fr       */
+/*   Updated: 2020/02/28 15:02:20 by frenna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,15 @@ void		find_paths(t_meta *all)
 	if (!(wae = (int *)malloc(sizeof(int) * all->room_count * j)))
 		put_error(all, 1);
 	while (i < all->room_count * j)
-	{
-		wae[i] = -1;
-		i++;
-	}
+		wae[i++] = -1;
 	i = 0;
 	while (i < all->room_count * j)
-  {
+	{
 		if (i == all->room_count)
 			printf("\n");
       printf("%2i", wae[i]);
 		i++;
-  }
+	}
 	printf("\n");
 	tf_nodewae(all, wae, j);
 	i = 0;

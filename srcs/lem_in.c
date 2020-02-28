@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
+/*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:19:18 by Elena             #+#    #+#             */
-/*   Updated: 2020/02/27 20:03:25 by Elena            ###   ########.fr       */
+/*   Updated: 2020/02/28 13:25:54 by frenna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem.h"
 
-static void	init_meta(t_meta *map)
+void		init_meta(t_meta *map)
 {
 	map->rooms = NULL;
 	map->links = NULL;

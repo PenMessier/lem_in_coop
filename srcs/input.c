@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
+/*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 15:34:30 by frenna            #+#    #+#             */
-/*   Updated: 2020/02/27 16:20:07 by Elena            ###   ########.fr       */
+/*   Updated: 2020/02/28 14:43:20 by frenna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void 			input(t_meta *all)
 
 	i = 0;
 	curr = all->links;
-	all->n = all->room_count;
 	all->s = all->start->i;
 	all->t = all->end->i;
 	all->c = (int *)malloc(all->room_count * all->room_count * sizeof(int));
