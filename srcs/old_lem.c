@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 15:34:11 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/03 12:32:06 by Elena            ###   ########.fr       */
+/*   Updated: 2020/03/03 12:38:44 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,9 @@ static void	test(t_meta *one)
 	int				k;
 
 	k = 0;
-	j = 0;
 	for (i = 0; i < one->room_count; i++)
 	{
-		for (i = 0; i < one->room_count; i++)
+		for (j = 0; j < one->room_count; j++)
 		{
 			if (i != j)
 				if (one->c[i * one->room_count + j] != one->c[j * one->room_count + i])
