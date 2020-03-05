@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_undub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
+/*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:10:29 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/03 14:01:28 by Elena            ###   ########.fr       */
+/*   Updated: 2020/03/05 13:20:14 by frenna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,16 @@ void	ft_undub(t_meta *all, t_meta *dub)
 	int	c;
 
 	i = 0;
-	while (i < all->room_count)
+	while (i < all->n)
 	{
 		j = 0;
-		while (j < all->room_count)
+		while (j < all->n)
 		{
-			a = dub->f[i * dub->room_count * 2 + j * 2];
-			b = dub->f[i * dub->room_count * 2 + j * 2 + 1];
-			c = dub->f[i * dub->room_count * 2 + j * 2 + dub->room_count];
-			all->f[i * all->room_count + j] = a + b + c +
-				dub->f[i * dub->room_count * 2 + j * 2 + 1 + dub->room_count];
+			a = dub->f[i * dub->n * 2 + j * 2];
+			b = dub->f[i * dub->n * 2 + j * 2 + 1];
+			c = dub->f[i * dub->n * 2 + j * 2 + dub->n];
+			all->f[i * all->n + j] = a + b + c +
+				dub->f[i * dub->n * 2 + j * 2 + 1 + dub->n];
 			j++;
 		}
 		i++;

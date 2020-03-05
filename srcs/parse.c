@@ -3,26 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
+/*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:22:25 by Elena             #+#    #+#             */
-/*   Updated: 2020/02/27 15:03:49 by Elena            ###   ########.fr       */
+/*   Updated: 2020/03/05 12:57:56 by frenna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem.h"
-
-/*int		valid_map(t_meta map)
-{
-	t_room	*curr;
-	t_link	*clink;
 	
-	
-	return (1);
-}
-*/
-	
-void	ft_parse(char *input, t_meta *map, int *nl)
+void	ft_parse(char *input, t_map *map, int *nl)
 {
 	if (!input)
 		*nl = -1;

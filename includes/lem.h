@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
+/*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 14:58:30 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/03 15:58:50 by Elena            ###   ########.fr       */
+/*   Updated: 2020/03/05 13:47:26 by frenna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,25 +37,31 @@ typedef struct		s_link
 	struct s_link	*next;
 }					t_link;
 
-typedef struct		s_meta
+typedef struct 		s_meta
 {
-	t_room			*rooms;
-	t_room			*start;
-	t_room			*end;
-	t_link			*links;
-	int				ant_count;
-	int				room_count;
+	int				n;
 	int     		s;
 	int     		t;
-	int					*c;
+	int				*c;
 	int     		*f;
 	int     		*d;
 	int     		*ptr;
 	int     		*q;
 }					t_meta;
 
+typedef struct		s_map
+{
+	t_room			*rooms;
+	t_room			*start;
+	t_room			*end;
+	t_link			*links;
+	t_meta			*all;
+	int				ant_count;
+	int				room_count;
+}					t_map;
+
 void			ft_pr_f(t_meta *all);
-void			input(t_meta *all);
+void			create_link_matrix(t_map *map);
 int				imin(int a, int b);
 int				bfs(t_meta *dub);
 int				dfs (int v, int flow, t_meta *dub);
@@ -63,47 +69,55 @@ int				dinic(t_meta *all);
 void			ft_dub(t_meta *all, t_meta *dub);
 void			ft_undub(t_meta *all, t_meta *dub);
 void			tf_nodewae(t_meta *all, int *wae, int nom);
-void			find_paths(t_meta *all);
+void			find_paths(t_map *map);
 
 /*
 ** Parse input
 */
 
-void				init_meta(t_meta *map);
-void				ft_parse(char *input, t_meta *map, int *nl);
+void				init_map(t_map *map);
+void				init_meta(t_meta *meta);
+void				ft_parse(char *input, t_map *map, int *nl);
 
 /*
 ** Validation functions
 */
 
-void				valid_ants(char *input, t_meta *map);
-void				valid_room(char *input, t_meta *map, int *nl);
-void				valid_link(char *input, t_meta *map);
-//int					valid_map(t_meta map);
+void				valid_ants(char *input, t_map *map);
+void				valid_room(char *input, t_map *map, int *nl);
+void				valid_link(char *input, t_map *map);
+int					valid_map(t_map *map);
 
 /*
 ** Error management functions
 */
 
-void				put_error(t_meta *map, int r);
+void				put_error(t_map *map, int r);
 
 /*
 ** Structures utility functions
 */
 
 t_room				*create_new_room(int x, int y, char *name, int li);
-int					add_room(t_room *new, t_meta *map, int *nl);
+int					add_room(t_room *new, t_map *map, int *nl);
 t_room				*find_room(t_room *rooms, char *name);
 int					count_index_rooms(t_room *rooms);
-void				assign_level(t_meta *map, int level);
 int					add_link(t_link **links, t_room *start, t_room *end);
 void				swap_rooms(t_link *link);
-void				free_struct(t_meta *map);
+void				free_struct(t_map *map);
+void				free_meta(t_meta *all);
+
+/*
+** Assign level to rooms
+*/
+
+void				assign_level(t_map *map, int level);
+void				check_end_level(t_map *map);
 
 /*
 ** Print function
 */
 
-void				print_input(t_meta map);
+void				print_input(t_map map);
 
 #endif

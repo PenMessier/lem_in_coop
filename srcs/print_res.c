@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   print_res.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
+/*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 17:03:09 by Elena             #+#    #+#             */
-/*   Updated: 2020/03/03 15:18:26 by Elena            ###   ########.fr       */
+/*   Updated: 2020/03/05 12:57:56 by frenna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem.h"
 
-void	print_input(t_meta map)
+void	print_input(t_map map)
 {
 	t_room	*p_room;
 	t_link	*p_link;

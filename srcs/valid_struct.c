@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate.c                                         :+:      :+:    :+:   */
+/*   valid_struct.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
+/*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 13:03:48 by frenna            #+#    #+#             */
-/*   Updated: 2020/02/27 15:02:18 by Elena            ###   ########.fr       */
+/*   Updated: 2020/03/05 12:57:56 by frenna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	valid_line_room(char *s, int *x, int *y, int *li)
 
 static int	valid_line_link(char *s)
 {
-	int				min;
+	int		min;
 
 	min = 0;
 	while (*s)
@@ -62,12 +62,12 @@ static int	valid_line_link(char *s)
 	return (min);
 }
 
-void				valid_link(char *input, t_meta *map)
+void		valid_link(char *input, t_map *map)
 {
-	int				mi;
-	char			**t;
-	t_room		*start;
-	t_room		*end;
+	int		mi;
+	char	**t;
+	t_room	*start;
+	t_room	*end;
 
 	if (!(mi = valid_line_link(input)))
 	{
@@ -87,11 +87,11 @@ void				valid_link(char *input, t_meta *map)
 	ft_free_array(t, 1);
 }
 
-void				valid_room(char *input, t_meta *map, int *nl)
+void		valid_room(char *input, t_map *map, int *nl)
 {
-	int				x;
-	int				y;
-	int				li;
+	int		x;
+	int		y;
+	int		li;
 
 	if (!valid_line_room(input, &x, &y, &li))
 	{

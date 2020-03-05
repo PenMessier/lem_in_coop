@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: Elena <Elena@student.42.fr>                +#+  +:+       +#+         #
+#    By: frenna <frenna@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/26 14:57:13 by frenna            #+#    #+#              #
-#    Updated: 2020/02/27 20:00:52 by Elena            ###   ########.fr        #
+#    Updated: 2020/03/05 13:48:32 by frenna           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ NAME = lem-in
 LIB = libft.a
 LIB_PATH = libft/
 
-SRC_NAMES = old_lem.c \
-	input.c \
+SRC_NAMES = find_paths.c \
+	create_link_matrix.c \
 	dinic.c \
 	ft_pr_f.c \
 	bfs.c \
@@ -24,8 +24,9 @@ SRC_NAMES = old_lem.c \
 	ft_dub.c \
 	ft_undub.c \
 	tf_nodewae.c \
-	lem_in.c parse.c valid_ants.c validate.c error_manag.c room_struct_utils.c \
-	link_struct_utils.c print_res.c
+	lem_in.c parse.c valid_map_ants.c valid_struct.c error_manag.c room_struct_utils.c \
+	link_struct_utils.c assign_room_levels.c \
+	print_res.c
 
 SRCS = $(addprefix srcs/, $(SRC_NAMES))
 SRC_DIR = srcs/
