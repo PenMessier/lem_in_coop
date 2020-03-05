@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 15:34:46 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/03 12:34:34 by Elena            ###   ########.fr       */
+/*   Updated: 2020/03/03 15:04:00 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,15 @@ int     	dinic(t_meta *all)
 	ft_dub(all, &dub);
 	while((test = bfs(&dub)))
 	{
-		// printf("bfs %d\n", test);
 		ft_memset((&dub)->ptr, 0, (&dub)->room_count * sizeof((&dub)->ptr[0]));
 		while ((pushed = dfs((&dub)->s, 1234567890, &dub)))
-		{
 			flow += pushed;
-		}
 	}
 	//printf("bfs %d\n", test);
 	ft_undub(all, &dub);
 	//printf("DUB3\n");
 	//ft_pr_f(&dub);
-	//ft_pr_f(all);
+	// ft_pr_f(all);
 	//printf("DUB3\n");
 	printf("flow = %i\n", flow);
 	free_struct(&dub);

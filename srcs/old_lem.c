@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 15:34:11 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/03 12:38:44 by Elena            ###   ########.fr       */
+/*   Updated: 2020/03/03 15:03:42 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void		find_paths(t_meta *all)
 	input(all);
 	test(all);
 	j = dinic(all);
-	j = ft_abs(j);
 	//ft_pr_f(all);
+	j = ft_abs(j);
 	if (!(wae = (int *)malloc(sizeof(int) * all->room_count * j)))
 		put_error(all, 1);
 	while (i < all->room_count * j)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 15:36:52 by frenna            #+#    #+#             */
-/*   Updated: 2020/02/29 13:20:42 by frenna           ###   ########.fr       */
+/*   Updated: 2020/03/03 13:38:44 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int     bfs(t_meta *dub)
 		to = 0;
 		while (to < dub->room_count)
 		{
-			to++;
+			++to;
 			if (dub->d[to] == -1 &&
 			dub->f[v * dub->room_count + to] < dub->c[v * dub->room_count + to])
 			{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 14:58:30 by frenna            #+#    #+#             */
-/*   Updated: 2020/02/28 14:44:04 by frenna           ###   ########.fr       */
+/*   Updated: 2020/03/03 15:58:50 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct		s_room
 	int				y;
 	int				stat; //used - 1, unused - 0, start - 2, end - 3
 	int				ant;
+	int				level;
 	struct s_room	*next;
 }					t_room;
 
@@ -46,7 +47,7 @@ typedef struct		s_meta
 	int				room_count;
 	int     		s;
 	int     		t;
-	int				*c;
+	int					*c;
 	int     		*f;
 	int     		*d;
 	int     		*ptr;
@@ -94,7 +95,9 @@ t_room				*create_new_room(int x, int y, char *name, int li);
 int					add_room(t_room *new, t_meta *map, int *nl);
 t_room				*find_room(t_room *rooms, char *name);
 int					count_index_rooms(t_room *rooms);
+void				assign_level(t_meta *map, int level);
 int					add_link(t_link **links, t_room *start, t_room *end);
+void				swap_rooms(t_link *link);
 void				free_struct(t_meta *map);
 
 /*

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 15:37:01 by frenna            #+#    #+#             */
-/*   Updated: 2020/02/29 14:00:42 by frenna           ###   ########.fr       */
+/*   Updated: 2020/03/03 13:41:19 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		dfs(int v, int flow, t_meta *dub)
 	to = dub->ptr[v];
 	while (to < dub->room_count)
 	{
-		to++;
+		++to;
 		if (dub->d[to] != dub->d[v] + 1)
 			continue;
 		pushed = dfs(to, imin(flow, dub->c[v * dub->room_count + to] -

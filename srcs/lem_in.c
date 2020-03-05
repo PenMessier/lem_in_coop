@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:19:18 by Elena             #+#    #+#             */
-/*   Updated: 2020/02/29 13:40:41 by frenna           ###   ########.fr       */
+/*   Updated: 2020/03/03 15:34:10 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ int			main(int ac, char **av)
 				put_error(&lemin, 1);
 		}
 		lemin.room_count = count_index_rooms(lemin.rooms);
-		//print_input(lemin);
+		assign_level(&lemin, 0);
+		print_input(lemin);
 		find_paths(&lemin);
 		free_struct(&lemin);
 	}
