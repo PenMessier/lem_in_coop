@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: frenna <frenna@student.42.fr>              +#+  +:+       +#+         #
+#    By: Elena <Elena@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/10 13:36:52 by frenna            #+#    #+#              #
-#    Updated: 2020/02/19 12:12:05 by frenna           ###   ########.fr        #
+#    Updated: 2020/03/05 19:29:41 by Elena            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,14 +18,16 @@ SRCS = ft_memcpy.c ft_memset.c ft_strcat.c ft_strrchr.c ft_strdel.c ft_strnew.c 
 OBJ = $(SRCS:.c=.o)
 FLAGS = -Wall -Wextra -Werror -c
 
+INCLUDES = libft.h
+
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 
-$(OBJ): $(SRCS)
-	gcc $(FLAGS) $(SRCS)
+$(OBJ): $(SRCS) $(INCLUDES)
+	gcc $(FLAGS) -I $(INCLUDES) $(SRCS)
 
 clean: 
 	rm -f $(OBJ)

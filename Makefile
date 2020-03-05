@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: frenna <frenna@student.42.fr>              +#+  +:+       +#+         #
+#    By: Elena <Elena@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/26 14:57:13 by frenna            #+#    #+#              #
-#    Updated: 2020/03/05 13:48:32 by frenna           ###   ########.fr        #
+#    Updated: 2020/03/05 21:07:44 by Elena            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,37 +28,46 @@ SRC_NAMES = find_paths.c \
 	link_struct_utils.c assign_room_levels.c \
 	print_res.c
 
-SRCS = $(addprefix srcs/, $(SRC_NAMES))
 SRC_DIR = srcs/
+SRCS = $(addprefix $(SRC_DIR), $(SRC_NAMES))
 
-OBJ = $(addprefix obj/, $(SRC_NAMES:%.c=%.o))
 OBJ_DIR = obj/
+OBJ = $(addprefix $(OBJ_DIR), $(SRC_NAMES:%.c=%.o))
 
 INCLUDES = includes/lem.h
 
 FLAGS =  -Wall -Wextra -Werror
 
-all: $(NAME)
+GREEN = \033[0;32m
+RED = \033[0;31m
+RESET = \033[0m
 
-$(NAME): $(LIB) $(OBJ_DIR) $(OBJ) $(INCLUDES)
-	gcc $(FLAGS) $(LIB_PATH)$(LIB) -I $(INCLUDES) $(OBJ) -o $(NAME)
+all: $(LIB) $(NAME)
 
 $(LIB): $(LIB_PATH)
 	@make -C $(LIB_PATH)
+	
+$(NAME): $(OBJ_DIR) $(OBJ) $(INCLUDES)
+	gcc $(FLAGS) $(LIB_PATH)$(LIB) -I $(INCLUDES) $(OBJ) -o $(NAME)
+	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
 
 $(OBJ_DIR):
 	@mkdir -p obj
-	
+	@echo "$(NAME): $(GREEN) $(OBJ_DIR) was created$(RESET)"
+
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	gcc $(FLAGS) -c $< -o $@
 
 clean:
 	/bin/rm -rf $(OBJ_DIR)
 	@make clean -C $(LIB_PATH)
+	@echo "$(NAME): $(RED)$(OBJ_DIR) was deleted$(RESET)"
+	@echo "$(NAME): $(RED)object files were deleted$(RESET)"
 
 fclean: clean
 	/bin/rm -f $(NAME)
 	@make fclean -C $(LIB_PATH)
+	@echo "$(NAME): $(RED)$(LIB) was deleted$(RESET)"
 
 re: fclean all
 
