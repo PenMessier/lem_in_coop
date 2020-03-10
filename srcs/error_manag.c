@@ -6,7 +6,7 @@
 /*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 13:12:45 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/05 13:47:37 by frenna           ###   ########.fr       */
+/*   Updated: 2020/03/10 11:17:39 by frenna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,10 @@ void			free_struct(t_map *map)
 	if (map && map->links)
 		free_links(map->links);
 	if (map && map->all)
+	{
 		free_meta(map->all);
+		free(map->all ? map->all : NULL);
+	}
 }
 
 void		put_error(t_map *map, int r)

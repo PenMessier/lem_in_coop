@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: Elena <Elena@student.42.fr>                +#+  +:+       +#+         #
+#    By: frenna <frenna@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/26 14:57:13 by frenna            #+#    #+#              #
-#    Updated: 2020/03/05 21:07:44 by Elena            ###   ########.fr        #
+#    Updated: 2020/03/10 11:36:47 by frenna           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,14 +42,14 @@ GREEN = \033[0;32m
 RED = \033[0;31m
 RESET = \033[0m
 
-all: $(LIB) $(NAME)
+all: $(NAME) $(LIB)
 
-$(LIB): $(LIB_PATH)
-	@make -C $(LIB_PATH)
-	
 $(NAME): $(OBJ_DIR) $(OBJ) $(INCLUDES)
 	gcc $(FLAGS) $(LIB_PATH)$(LIB) -I $(INCLUDES) $(OBJ) -o $(NAME)
 	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
+
+$(LIB): $(LIB_PATH)
+	@make -C $(LIB_PATH)
 
 $(OBJ_DIR):
 	@mkdir -p obj
