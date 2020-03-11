@@ -52,6 +52,7 @@ void		find_paths(t_map *map)
 	int 	i;
 	int 	*wae;
 	int 	flow;
+	int	max;
 
 	i = 0;
 	if (!(map->all = (t_meta *)malloc(sizeof(t_meta))))
@@ -63,7 +64,8 @@ void		find_paths(t_map *map)
 	if (!(wae = (int *)malloc(sizeof(int) * map->room_count * flow)))
 		put_error(map, 1);
 	ft_memset(wae, -1, map->room_count * flow * sizeof(int));
-	tf_nodewae(map->all, wae, flow);
+	max = tf_nodewae(map->all, wae, flow);
+	ft_queen(max, flow, wae, map);
 	// ft_pr_f(map->all);
 	printf("flow = %i\n", flow);
 	while (i < map->room_count * flow)

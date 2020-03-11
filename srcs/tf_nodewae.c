@@ -28,7 +28,33 @@ void	tf_dewae(t_meta *all, int *wae, int *num)
 	}
 }
 
-void	tf_nodewae(t_meta *all, int *wae, int flow)
+int             ft_wae_max(int n, int *wae, int flow)
+{
+        int i;
+        int j;
+        int k;
+        int     max;
+
+        i = 0;
+        max = 0;
+        while (i < flow)
+        {
+                j = 0;
+                k = 0;
+                while (j < n)
+                {
+                        if (wae[i * n + j] != -1)
+                                k++;
+                        j++;
+                }
+                if (max < k)
+                        max = k;
+                i++;
+        }
+        return (max);
+}
+
+int	tf_nodewae(t_meta *all, int *wae, int flow)
 {
 	int num[5];
 
@@ -49,4 +75,5 @@ void	tf_nodewae(t_meta *all, int *wae, int flow)
 		}
 		num[0]++;
 	}
+	return(ft_wae_max(all->n, wae, flow));
 }

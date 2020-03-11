@@ -68,7 +68,7 @@ int				dfs (int v, int flow, t_meta *dub);
 int				dinic(t_meta *all);
 void			ft_dub(t_meta *all, t_meta *dub);
 void			ft_undub(t_meta *all, t_meta *dub);
-void			tf_nodewae(t_meta *all, int *wae, int nom);
+int			tf_nodewae(t_meta *all, int *wae, int nom);
 void			find_paths(t_map *map);
 
 /*
@@ -119,5 +119,6 @@ void				check_end_level(t_map *map);
 */
 
 void				print_input(t_map map);
+void    ft_queen(int max, int flow, int *wae, t_map *map);
 
 #endif

@@ -26,7 +26,8 @@ SRC_NAMES = find_paths.c \
 	tf_nodewae.c \
 	lem_in.c parse.c valid_map_ants.c valid_struct.c error_manag.c room_struct_utils.c \
 	link_struct_utils.c assign_room_levels.c \
-	print_res.c
+	print_res.c \
+	ft_queen.c
 
 SRC_DIR = srcs/
 SRCS = $(addprefix $(SRC_DIR), $(SRC_NAMES))
