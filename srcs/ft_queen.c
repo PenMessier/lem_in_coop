@@ -110,12 +110,13 @@ int	ft_act(t_way *cool, t_map *map, int *ant)
 	return (action);
 }
 
-int ft_rerot(t_way *cool, int *ant, int *j)
+void ft_rerot(t_way *cool, int *ant, int *j, int *action)
 {
 	cool->ant = *ant;
 	*ant = *ant + 1;
 	*j = *j + 1;
-	return (1);
+	if (*action < 1)
+		*action = 1;
 }
 
 void	ft_rotate(int max, int flow, t_way *cool, t_map *map)
@@ -141,7 +142,7 @@ void	ft_rotate(int max, int flow, t_way *cool, t_map *map)
 		}
 		j = 0;
 		while (j < flow && ant <= map->ant_count)
-			action = ft_rerot((cool + max * j), &ant, &j);
+			ft_rerot((cool + max * j), &ant, &j, &action);
 		if (action == 2)
 			write(1, "\n", 1);
 	}
