@@ -3,25 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_queen.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gerenfor <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 15:20:30 by gerenfor          #+#    #+#             */
-/*   Updated: 2020/03/05 17:18:29 by gerenfor         ###   ########.fr       */
+/*   Updated: 2020/03/12 09:12:29 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem.h"
 
-typedef struct          s_way
+char			*ft_runo(t_map *map, int no)
 {
-	int	roomno;
-	int	ant;
-	char	*room;
-}			t_way;
-
-char *ft_runo(t_map *map, int no)
-{
-	t_room *tmp;
+	t_room	*tmp;
 	
 	tmp = map->rooms;
 	while (tmp->i != no)
@@ -46,7 +39,7 @@ void	ft_becool(t_way *cool, int *wae, t_map *map)
 	cool->room = ft_runo(map, cool->roomno);
 }
 
-void ft_full(t_way *cool, int max, int row)
+void	ft_full(t_way *cool, int max, int row)
 {
 	int i;
 
@@ -62,12 +55,12 @@ void ft_full(t_way *cool, int max, int row)
 	}
 }
 
-int	ft_react(t_way *cool)
+int		ft_react(t_way *cool)
 {
-	int *rs;
-	int *rt;
-	int *as;
-	int *at;
+	int	*rs;
+	int	*rt;
+	int	*as;
+	int	*at;
 
 	rt = &cool->roomno;
 	rs = &((cool - 1)->roomno);
@@ -86,13 +79,13 @@ int	ft_react(t_way *cool)
 	return (2);
 }
 
-int	ft_act(t_way *cool, t_map *map, int *ant)
+int		ft_act(t_way *cool, t_map *map, int *ant)
 {
-	int action;
-	int *rs;
-	int *rt;
-	int *as;
-	int *at;
+	int	action;
+	int	*rs;
+	int	*rt;
+	int	*as;
+	int	*at;
 
 	rt = &cool->roomno;
 	rs = &((cool - 1)->roomno);
@@ -110,7 +103,7 @@ int	ft_act(t_way *cool, t_map *map, int *ant)
 	return (action);
 }
 
-void ft_rerot(t_way *cool, int *ant, int *j, int *action)
+void	ft_rerot(t_way *cool, int *ant, int *j, int *action)
 {
 	cool->ant = *ant;
 	*ant = *ant + 1;
@@ -148,10 +141,10 @@ void	ft_rotate(int max, int flow, t_way *cool, t_map *map)
 	}
 }
 
-void	ft_queen(int max, int flow, int	*wae, t_map *map)
+void		ft_queen(int max, int flow, int	*wae, t_map *map)
 {
 	t_way	cool[(max + 1) * flow];
-	int i;
+	int		i;
 
 	ft_full(cool, max + 1, flow);
 	i = 0;
