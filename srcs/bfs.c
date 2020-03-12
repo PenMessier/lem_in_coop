@@ -6,18 +6,18 @@
 /*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 15:36:52 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/12 12:54:41 by frenna           ###   ########.fr       */
+/*   Updated: 2020/03/12 13:48:33 by frenna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem.h"
 
-int     bfs(t_meta *dub)
+int		bfs(t_meta *dub)
 {
-	int 	to;
-	int 	qh;
-	int 	qt;
-	int 	v;
+	int	to;
+	int	qh;
+	int	qt;
+	int	v;
 
 	qh = 0;
 	qt = 0;
@@ -28,11 +28,10 @@ int     bfs(t_meta *dub)
 	{
 		v = dub->q[qh++];
 		to = 0;
-		while (to < dub->n)
+		while (to++ < dub->n)
 		{
-			++to;
-			if (dub->d[to] == -1 &&
-			dub->f[v * dub->n + to] < dub->c[v * dub->n + to])
+			if (dub->d[to] == -1
+			&& dub->f[v * dub->n + to] < dub->c[v * dub->n + to])
 			{
 				dub->q[qt++] = to;
 				dub->d[to] = dub->d[v] + 1;

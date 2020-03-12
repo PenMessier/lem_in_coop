@@ -6,7 +6,7 @@
 /*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 12:14:32 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/12 11:13:57 by frenna           ###   ########.fr       */
+/*   Updated: 2020/03/12 14:06:01 by frenna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ t_room		*create_new_room(int x, int y, char *name, int li)
 	t_room	*new;
 
 	if (!(new = (t_room *)malloc(sizeof(*new))))
-		return NULL;
+		return (NULL);
 	if (!(new->name = ft_strnew((size_t)li)))
-		return NULL;
+		return (NULL);
 	ft_memcpy(new->name, name, (size_t)li);
 	new->x = x;
 	new->y = y;
@@ -34,7 +34,6 @@ int			add_room(t_room *new, t_map *map, int *nl)
 {
 	t_room	*curr;
 
-	curr = map->rooms;
 	if (!new)
 		return (0);
 	if (*nl == 0 || *nl == 1)
@@ -45,7 +44,7 @@ int			add_room(t_room *new, t_map *map, int *nl)
 		new->level = *nl == 0 ? 0 : new->level;
 	}
 	*nl = 3;
-	if (!map->rooms)
+	if (!(curr = map->rooms))
 	{
 		map->rooms = new;
 		return (1);

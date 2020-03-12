@@ -6,7 +6,7 @@
 /*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:19:18 by Elena             #+#    #+#             */
-/*   Updated: 2020/03/12 12:44:25 by frenna           ###   ########.fr       */
+/*   Updated: 2020/03/12 15:47:37 by frenna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,3 @@ void		fill_map(t_map *lemin)
 	assign_level(lemin, 0);
 	check_end_level(lemin);
 }
-

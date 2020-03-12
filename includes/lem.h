@@ -6,7 +6,7 @@
 /*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 14:58:30 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/12 12:35:59 by frenna           ###   ########.fr       */
+/*   Updated: 2020/03/12 14:11:29 by frenna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct		s_room
 	char			*name;
 	int				x;
 	int				y;
-	int				stat; //used - 1, unused - 0, start - 2, end - 3
+	int				stat;
 	int				ant;
 	int				level;
 	struct s_room	*next;
@@ -38,13 +38,13 @@ typedef struct		s_link
 typedef struct		s_meta
 {
 	int				n;
-	int     		s;
-	int     		t;
+	int				s;
+	int				t;
 	int				*c;
-	int     		*f;
-	int     		*d;
-	int     		*ptr;
-	int     		*q;
+	int				*f;
+	int				*d;
+	int				*ptr;
+	int				*q;
 }					t_meta;
 
 typedef struct		s_way
@@ -82,7 +82,6 @@ void				valid_ants(char *input, t_map *map);
 void				valid_room(char *input, t_map *map, int *nl);
 void				valid_link(char *input, t_map *map);
 int					valid_map(t_map *map);
-
 
 /*
 ** Dinic algorithm functions

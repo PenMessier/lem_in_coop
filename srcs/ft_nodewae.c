@@ -6,7 +6,7 @@
 /*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:29:37 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/12 11:45:40 by frenna           ###   ########.fr       */
+/*   Updated: 2020/03/12 14:07:11 by frenna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ static void	tf_dewae(t_meta *all, int *wae, int *num)
 
 static int	ft_wae_max(int n, int *wae, int flow)
 {
-	int 	i;
-	int 	j;
-	int 	k;
+	int		i;
+	int		j;
+	int		k;
 	int		max;
 
 	i = 0;
@@ -56,7 +56,7 @@ static int	ft_wae_max(int n, int *wae, int flow)
 
 int			ft_nodewae(t_meta *all, int *wae, int flow)
 {
-	int 	num[5];
+	int		num[5];
 
 	num[0] = 0;
 	num[3] = 0;
