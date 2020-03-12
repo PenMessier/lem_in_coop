@@ -6,7 +6,7 @@
 #    By: frenna <frenna@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/26 14:57:13 by frenna            #+#    #+#              #
-#    Updated: 2020/03/10 11:46:33 by frenna           ###   ########.fr        #
+#    Updated: 2020/03/12 12:34:33 by frenna           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,20 +14,31 @@ NAME = lem-in
 LIB = libft.a
 LIB_PATH = libft/
 
-SRC_NAMES = find_paths.c \
+SRC_NAMES = main.c \
+	find_paths.c \
 	create_link_matrix.c \
 	dinic.c \
 	ft_pr_f.c \
 	bfs.c \
 	dfs.c \
-	imin.c \
+	ft_init_meta.c \
+	ft_min.c \
 	ft_dub.c \
 	ft_undub.c \
-	tf_nodewae.c \
-	lem_in.c parse.c valid_map_ants.c valid_struct.c error_manag.c room_struct_utils.c \
-	link_struct_utils.c assign_room_levels.c \
-	print_res.c \
-	ft_queen.c
+	ft_nodewae.c \
+	ft_parse.c \
+	valid_map_ants.c \
+	valid_struct.c \
+	memory_manag.c \
+	map_struct_utils.c \
+	room_struct_utils.c \
+	link_struct_utils.c \
+	way_struct_utils.c \
+	assign_room_levels.c \
+	ft_print_input.c \
+	ft_queen.c \
+	print_action.c \
+	put_error.c
 
 SRC_DIR = srcs/
 SRCS = $(addprefix $(SRC_DIR), $(SRC_NAMES))

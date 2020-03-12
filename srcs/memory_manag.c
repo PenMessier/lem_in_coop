@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_manag.c                                      :+:      :+:    :+:   */
+/*   memory_manag.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 13:12:45 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/10 11:17:39 by frenna           ###   ########.fr       */
+/*   Updated: 2020/03/12 11:53:30 by frenna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,33 +38,7 @@ static void	free_links(t_link *links)
 	}
 }
 
-/*static void	free_paths(t_path *paths)
-{
-	t_path	*curr;
-
-	while (paths)
-	{
-		if (paths->rooms)
-			free(paths->rooms);
-		curr = paths->next;
-		free(paths);
-		paths = curr;
-	}
-}
-
-static void	free_ants(t_ant *ants)
-{
-	t_ant	*curr;
-
-	while (ants)
-	{
-		curr = ants->next;
-		free(ants);
-		ants = curr;
-	}
-}*/
-
-void			free_meta(t_meta *all)
+void		free_meta(t_meta *all)
 {
 	if (all && all->c)
 		free(all->c);
@@ -78,7 +52,7 @@ void			free_meta(t_meta *all)
 		free(all->q);
 }
 
-void			free_struct(t_map *map)
+void		free_struct(t_map *map)
 {
 	if (map && map->rooms)
 		free_rooms(map->rooms);
@@ -89,12 +63,4 @@ void			free_struct(t_map *map)
 		free_meta(map->all);
 		free(map->all ? map->all : NULL);
 	}
-}
-
-void		put_error(t_map *map, int r)
-{
-	free_struct(map);
-	errno = r;
-	perror("Error");
-	exit(r);
 }

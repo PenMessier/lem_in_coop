@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_min.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/04 15:34:50 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/12 13:16:07 by frenna           ###   ########.fr       */
+/*   Created: 2020/02/26 15:36:41 by frenna            #+#    #+#             */
+/*   Updated: 2020/02/28 13:06:30 by frenna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/lem.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+int ft_min(int a, int b)
 {
-	char	*s;
-	char	*d;
-
-	s = (char *)src;
-	d = (char *)dest;
-	while (n--)
-	{
-		*d = *s;
-		d++;
-		s++;
-	}
-	return (dest);
+	if (a < b)
+		return a;
+	return b;
 }

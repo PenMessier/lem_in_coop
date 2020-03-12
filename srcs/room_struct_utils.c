@@ -6,7 +6,7 @@
 /*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 12:14:32 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/05 12:57:56 by frenna           ###   ########.fr       */
+/*   Updated: 2020/03/12 11:13:57 by frenna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_room		*create_new_room(int x, int y, char *name, int li)
 	return (new);
 }
 
-int				add_room(t_room *new, t_map *map, int *nl)
+int			add_room(t_room *new, t_map *map, int *nl)
 {
 	t_room	*curr;
 
@@ -100,4 +100,14 @@ int			count_index_rooms(t_room *rooms)
 		start->i = 0;
 	}
 	return (i);
+}
+
+char		*get_room_name(t_map *map, int no)
+{
+	t_room	*tmp;
+
+	tmp = map->rooms;
+	while (tmp->i != no)
+		tmp = tmp->next;
+	return (tmp->name);
 }

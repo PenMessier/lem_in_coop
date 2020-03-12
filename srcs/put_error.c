@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   put_error.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/04 15:34:50 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/12 13:16:07 by frenna           ###   ########.fr       */
+/*   Created: 2020/03/12 11:48:34 by frenna            #+#    #+#             */
+/*   Updated: 2020/03/12 11:53:53 by frenna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/lem.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	put_error(t_map *map, int r)
 {
-	char	*s;
-	char	*d;
-
-	s = (char *)src;
-	d = (char *)dest;
-	while (n--)
-	{
-		*d = *s;
-		d++;
-		s++;
-	}
-	return (dest);
+	free_struct(map);
+	errno = r;
+	perror("Error");
+	exit(r);
 }

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tf_nodewae.c                                       :+:      :+:    :+:   */
+/*   ft_nodewae.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:29:37 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/05 13:24:59 by frenna           ###   ########.fr       */
+/*   Updated: 2020/03/12 11:45:40 by frenna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem.h"
 
-void	tf_dewae(t_meta *all, int *wae, int *num)
+static void	tf_dewae(t_meta *all, int *wae, int *num)
 {
 	num[2] = 0;
 	while (num[2] < all->n)
@@ -28,35 +28,35 @@ void	tf_dewae(t_meta *all, int *wae, int *num)
 	}
 }
 
-int             ft_wae_max(int n, int *wae, int flow)
+static int	ft_wae_max(int n, int *wae, int flow)
 {
-        int i;
-        int j;
-        int k;
-        int     max;
+	int 	i;
+	int 	j;
+	int 	k;
+	int		max;
 
-        i = 0;
-        max = 0;
-        while (i < flow)
-        {
-                j = 0;
-                k = 0;
-                while (j < n)
-                {
-                        if (wae[i * n + j] != -1)
-                                k++;
-                        j++;
-                }
-                if (max < k)
-                        max = k;
-                i++;
-        }
-        return (max);
+	i = 0;
+	max = 0;
+	while (i < flow)
+	{
+		j = 0;
+		k = 0;
+		while (j < n)
+		{
+			if (wae[i * n + j] != -1)
+				k++;
+			j++;
+		}
+		if (max < k)
+			max = k;
+		i++;
+	}
+	return (max);
 }
 
-int	tf_nodewae(t_meta *all, int *wae, int flow)
+int			ft_nodewae(t_meta *all, int *wae, int flow)
 {
-	int num[5];
+	int 	num[5];
 
 	num[0] = 0;
 	num[3] = 0;
@@ -75,5 +75,5 @@ int	tf_nodewae(t_meta *all, int *wae, int flow)
 		}
 		num[0]++;
 	}
-	return(ft_wae_max(all->n, wae, flow));
+	return (ft_wae_max(all->n, wae, flow));
 }

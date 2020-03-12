@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
+/*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 10:45:07 by frenna            #+#    #+#             */
-/*   Updated: 2020/02/09 09:40:17 by Elena            ###   ########.fr       */
+/*   Updated: 2020/03/12 13:27:00 by frenna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void				ft_size(t_node **s, int fd, char **line, size_t f)
 				break ;
 		tmp = tmp->next;
 	}
-	(*line = ft_strnew(f)) ? ft_line(s,line, fd) : 0;
+	(*line = ft_strnew(f)) ? ft_line(s, line, fd) : 0;
 	curr = *s;
 	while (curr && curr->next != NULL)
 	{

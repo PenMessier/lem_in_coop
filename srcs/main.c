@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/04 15:34:50 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/12 13:16:07 by frenna           ###   ########.fr       */
+/*   Created: 2020/03/12 11:54:51 by frenna            #+#    #+#             */
+/*   Updated: 2020/03/12 13:02:20 by frenna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/lem.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+int			main(int ac, char **av)
 {
-	char	*s;
-	char	*d;
+	t_map	lemin;
 
-	s = (char *)src;
-	d = (char *)dest;
-	while (n--)
+	if (ac == 1)
 	{
-		*d = *s;
-		d++;
-		s++;
+		fill_map(&lemin);
+		// ft_print_input(lemin);
+		find_paths(&lemin);
+		free_struct(&lemin);
 	}
-	return (dest);
+	av = 0;
+	return (0);
 }

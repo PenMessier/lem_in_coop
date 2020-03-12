@@ -6,7 +6,7 @@
 /*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 15:37:01 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/05 13:20:46 by frenna           ###   ########.fr       */
+/*   Updated: 2020/03/12 12:01:28 by frenna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		dfs(int v, int flow, t_meta *dub)
 		++to;
 		if (dub->d[to] != dub->d[v] + 1)
 			continue;
-		pushed = dfs(to, imin(flow, dub->c[v * dub->n + to] -
+		pushed = dfs(to, ft_min(flow, dub->c[v * dub->n + to] -
 			dub->f[v * dub->n + to]), dub);
 		if (pushed)
 		{

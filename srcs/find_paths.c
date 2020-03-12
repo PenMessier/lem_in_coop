@@ -1,80 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   old_lem.c                                          :+:      :+:    :+:   */
+/*   find_paths.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 15:34:11 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/05 13:45:03 by frenna           ###   ########.fr       */
+/*   Updated: 2020/03/12 12:41:13 by frenna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem.h"
 
-/*static void	test(t_map *one)
+void	find_paths(t_map *map)
 {
-	int				i;
-	int				flow;
-	int				k;
-
-	k = 0;
-	for (i = 0; i < one->room_count; i++)
-	{
-		for (flow = 0; flow < one->room_count; flow++)
-		{
-			if (i != flow)
-				if (one->c[i * one->room_count + flow] != one->c[flow * one->room_count + i])
-				{
-					printf("c[%i][%i] != c[%i][%i]\n", i, flow, flow, i);
-					k = 1;
-				}
-		}
-	}
-	if (k == 0)
-	printf("all right\n");
-} 
-*/
-
-void		init_meta(t_meta *meta)
-{
-	meta->s = 0;
-	meta->t = 0;
-	meta->c = 0;
-	meta->f = 0;
-	meta->d = 0;
-	meta->ptr = 0;
-	meta->q = 0;
-}
-
-void		find_paths(t_map *map)
-{
-	int 	i;
-	int 	*wae;
-	int 	flow;
+	int	i;
+	int	*wae;
+	int flow;
 	int	max;
 
 	i = 0;
 	if (!(map->all = (t_meta *)malloc(sizeof(t_meta))))
 		put_error(map, 1);
-	init_meta(map->all);
-	create_link_matrix(map);
-	if (!(flow = dinic(map->all)))
+	ft_init_meta(map->all);
+	if (!create_link_matrix(map))
+		put_error(map, 1);
+	flow = dinic(map->all);
+	if (flow < 0)
+		put_error(map, 1);
+	if (!flow)
 		put_error(map, 10);
 	if (!(wae = (int *)malloc(sizeof(int) * map->room_count * flow)))
 		put_error(map, 1);
 	ft_memset(wae, -1, map->room_count * flow * sizeof(int));
-	max = tf_nodewae(map->all, wae, flow);
+	max = ft_nodewae(map->all, wae, flow);
 	ft_queen(max, flow, wae, map);
-	// ft_pr_f(map->all);
-	printf("flow = %i\n", flow);
-	while (i < map->room_count * flow)
-	{
-		if (!(i % map->room_count) && i)
-			printf("\n");
-		if (wae[i] != -1)
-			printf("%3i", wae[i]);
-		i++;
-	}
-	printf("\n");
+	free(wae);
 }

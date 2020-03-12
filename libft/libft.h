@@ -6,7 +6,7 @@
 /*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 17:21:32 by frenna            #+#    #+#             */
-/*   Updated: 2020/02/19 12:12:43 by frenna           ###   ########.fr       */
+/*   Updated: 2020/03/12 13:04:34 by frenna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <ctype.h>
 # include <fcntl.h>
 
-# define BUFF_SIZE 5
+# define BUFF_SIZE 10
 
 typedef	struct		s_node
 {
