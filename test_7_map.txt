@@ -12,6 +12,7 @@ start-salle3
 salle1-salle2
 salle1-salle3
 salle2-salle3
-salle3-end
-salle2-end
-salle1-end
+end-end
+#salle3-end
+#salle2-end
+#salle1-end

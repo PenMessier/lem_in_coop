@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_struct.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 13:03:48 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/05 12:57:56 by frenna           ###   ########.fr       */
+/*   Updated: 2020/03/12 21:56:34 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static int	valid_line_link(char *s)
 	return (min);
 }
 
-void		valid_link(char *input, t_map *map)
+int			valid_link(char *input, t_map *map)
 {
 	int		mi;
 	char	**t;
@@ -70,24 +70,21 @@ void		valid_link(char *input, t_map *map)
 	t_room	*end;
 
 	if (!(mi = valid_line_link(input)))
-	{
-		free(input ? input : NULL);
-		put_error(map, 1);
-	}
+		return (0);
 	t = ft_strsplit(input, '-');
 	if (!(start = find_room(map->rooms, t[0]))
 		|| !(end = find_room(map->rooms, t[1])))
 	{
 		ft_free_array(t, 1);
-		free(input ? input : NULL);
-		put_error(map, EINVAL);
+		return (0);
 	}
 	else
 		add_link(&map->links, start, end);
 	ft_free_array(t, 1);
+	return (1);
 }
 
-void		valid_room(char *input, t_map *map, int *nl)
+int			valid_room(char *input, t_map *map, int *nl)
 {
 	int		x;
 	int		y;
@@ -98,18 +95,13 @@ void		valid_room(char *input, t_map *map, int *nl)
 		if ((valid_line_link(input)))
 		{
 			*nl = 4;
-			return ;
+			return (1);
 		}
 		else
-		{
-			free(input ? input : NULL);
-			put_error(map, EINVAL);
-		}
+			return (0);
 	}
 	if (!add_room(create_new_room(x, y, input, li),
 		map, nl))
-	{
-		free(input ? input : NULL);
-		put_error(map, 1);
-	}
+		return (0);
+	return (1);
 }

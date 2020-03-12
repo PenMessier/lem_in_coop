@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assign_room_levels.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 09:59:05 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/05 12:57:56 by frenna           ###   ########.fr       */
+/*   Updated: 2020/03/12 21:04:43 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ void		assign_level(t_map *map, int level)
 		}
 		cur_link = cur_link->next;
 	}
-	if (map->end->level == -1)
+	if (level < map->room_count)
 		assign_level(map, level + 1);
 }

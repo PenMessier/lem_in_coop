@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 14:58:30 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/12 14:11:29 by frenna           ###   ########.fr       */
+/*   Updated: 2020/03/12 22:02:36 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,16 @@ typedef struct		s_map
 
 void				init_map(t_map *map);
 void				ft_init_meta(t_meta *meta);
-void				ft_parse(char *input, t_map *map, int *nl);
-void				fill_map(t_map *lemin);
+int					ft_parse(char *input, t_map *map, int *nl);
+int					fill_map(t_map *lemin);
 
 /*
 ** Validation functions
 */
 
-void				valid_ants(char *input, t_map *map);
-void				valid_room(char *input, t_map *map, int *nl);
-void				valid_link(char *input, t_map *map);
+int					valid_ants(char *input, t_map *map);
+int					valid_room(char *input, t_map *map, int *nl);
+int					valid_link(char *input, t_map *map);
 int					valid_map(t_map *map);
 
 /*

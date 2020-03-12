@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   valid_map_ants.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 12:04:56 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/12 15:51:30 by frenna           ###   ########.fr       */
+/*   Updated: 2020/03/12 21:45:46 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem.h"
 
-void		valid_ants(char *input, t_map *map)
+int			valid_ants(char *input, t_map *map)
 {
 	char	*tmp;
 
@@ -20,10 +20,10 @@ void		valid_ants(char *input, t_map *map)
 	if (ft_strcmp((tmp = ft_itoa(map->ant_count)), input))
 	{
 		free(tmp ? tmp : NULL);
-		free(input ? input : NULL);
-		put_error(map, 1);
+		return (0);
 	}
 	free(tmp ? tmp : NULL);
+	return (1);
 }
 
 int			valid_map(t_map *map)

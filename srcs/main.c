@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 11:54:51 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/12 15:46:21 by frenna           ###   ########.fr       */
+/*   Updated: 2020/03/12 22:09:04 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int			main(int ac, char **av)
 
 	if (ac == 1)
 	{
-		fill_map(&lemin);
+		if (fill_map(&lemin))
+			find_paths(&lemin);
 		// ft_print_input(lemin);
-		find_paths(&lemin);
 		free_struct(&lemin);
 	}
 	av = 0;

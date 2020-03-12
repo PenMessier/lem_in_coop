@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_struct_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:19:18 by Elena             #+#    #+#             */
-/*   Updated: 2020/03/12 15:47:37 by frenna           ###   ########.fr       */
+/*   Updated: 2020/03/12 22:03:15 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,24 +21,31 @@ void		init_map(t_map *map)
 	map->all = NULL;
 }
 
-void		fill_map(t_map *lemin)
+int			fill_map(t_map *lemin)
 {
 	int		nl;
+	int		isvalid;
 	char	*input;
 
 	nl = 2;
+	isvalid = 1;
 	init_map(lemin);
 	while (get_next_line(0, &input))
 	{
-		ft_parse(input, lemin, &nl);
+		ft_putstr(input);
+		write(1, "\n", 1);
+		if (isvalid && !ft_parse(input, lemin, &nl))
+			isvalid = 0;
 		free(input ? input : NULL);
-		if (nl == -1)
-			put_error(lemin, 1);
 	}
+	write(1, "\n", 1);
 	free(input ? input : NULL);
+	if (!isvalid)
+		return (0);
 	lemin->room_count = count_index_rooms(lemin->rooms);
 	if (!valid_map(lemin))
-		put_error(lemin, 8);
+		return (0);
 	assign_level(lemin, 0);
 	check_end_level(lemin);
+	return (1);
 }
