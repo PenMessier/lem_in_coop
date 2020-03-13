@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:22:25 by Elena             #+#    #+#             */
-/*   Updated: 2020/03/12 22:04:31 by Elena            ###   ########.fr       */
+/*   Updated: 2020/03/13 12:24:48 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ int	ft_parse(char *input, t_map *map, int *nl)
 		return (valid_ants(input, map) ? 1 : 0);
 	}
 	if (*nl == 0 || *nl == 1 || *nl == 3)
-		return (valid_room(input, map, nl) ? 1 : 0);
+	{
+		if (!valid_room(input, map, nl))
+			return (0);
+	}
 	if (*nl == 4)
 		return (valid_link(input, map) ? 1 : 0);
 	return (1);

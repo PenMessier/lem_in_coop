@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_paths.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 15:34:11 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/12 15:45:56 by frenna           ###   ########.fr       */
+/*   Updated: 2020/03/13 15:34:33 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 void	find_paths(t_map *map)
 {
 	int	i;
+	int	j;
 	int	*wae;
 	int flow;
 	int	max;
 
 	i = 0;
+	j = 0;
 	if (!(map->all = (t_meta *)malloc(sizeof(t_meta))))
 		put_error(map, 1);
 	ft_init_meta(map->all);
@@ -38,10 +40,18 @@ void	find_paths(t_map *map)
 	printf("flow %d\n", flow);
 	while (i < map->room_count * flow)
 	{
-		if (i == map->room_count)
+		if ((i != 0 && !( i % map->room_count)) || i == map->room_count * flow - 1)
+		{
 			printf("\n");
+			printf("%d", j);
+			j = 0;
+			printf("\n");
+		}
 		if (wae[i] != -1)
+		{
+			j++;
 			printf("%d ", wae[i]);
+		}
 		i++;
 	}*/
 	ft_queen(max, flow, wae, map);

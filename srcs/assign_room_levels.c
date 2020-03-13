@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 09:59:05 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/12 21:04:43 by Elena            ###   ########.fr       */
+/*   Updated: 2020/03/13 14:11:33 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void		assign_level(t_map *map, int level)
 		if (cur_link->end->level == level && cur_link->start->level == -1)
 		{
 			cur_link->start->level = level + 1;
-			if (cur_link->end->stat != 3)
-				swap_rooms(cur_link);
+			// if (cur_link->end->stat != 3)
+				// swap_rooms(cur_link);
 		}
 		cur_link = cur_link->next;
 	}

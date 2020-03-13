@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 11:48:34 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/12 22:11:58 by Elena            ###   ########.fr       */
+/*   Updated: 2020/03/13 10:09:52 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ void	put_error(t_map *map, int r)
 {
 	free_struct(map);
 	errno = r;
-	perror("Error");
+	// perror("Error");
 	exit(r);
 }

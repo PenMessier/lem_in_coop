@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:19:18 by Elena             #+#    #+#             */
-/*   Updated: 2020/03/13 10:01:03 by Elena            ###   ########.fr       */
+/*   Updated: 2020/03/13 14:11:59 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ int			fill_map(t_map *lemin)
 	init_map(lemin);
 	while (get_next_line(0, &input))
 	{
-		ft_putstr(input);
-		write(1, "\n", 1);
+		// ft_putstr(input);
+		// write(1, "\n", 1);
 		if (isvalid && !ft_parse(input, lemin, &nl))
 			isvalid = 0;
 		free(input ? input : NULL);
 	}
-	write(1, "\n", 1);
+	// write(1, "\n", 1);
 	if (!lemin->rooms || !lemin->links || !lemin->start || !lemin->end || !isvalid)
 		return (0);
 	lemin->room_count = count_index_rooms(lemin->rooms);
