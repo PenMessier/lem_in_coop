@@ -12,9 +12,8 @@
 
 #include "../includes/lem.h"
 
-int			ft_act(t_way *cool, t_map *map, int *ant)
+void			ft_act(t_way *cool, t_map *map, int *ant, int *action)
 {
-	int		action;
 	int		*rs;
 	int		*rt;
 	int		*as;
@@ -24,16 +23,14 @@ int			ft_act(t_way *cool, t_map *map, int *ant)
 	rs = &((cool - 1)->roomno);
 	at = &(cool->ant);
 	as = &((cool - 1)->ant);
-	action = 0;
 	if ((*rt == map->all->s || *rt < 0) && *as < 0 && *ant <= map->ant_count)
 	{
 		*at = *ant;
 		*ant = *ant + 1;
-		action = 1;
+		*action < 1 ? (*action = 1) : 0;
 	}
 	else if (*as >= 0)
-		action = print_action(cool);
-	return (action);
+		print_action(cool, action);
 }
 
 void		ft_rerot(t_way *cool, int *ant, int *j, int *action)
@@ -51,7 +48,6 @@ void		ft_rotate(int max, int flow, t_way *cool, t_map *map)
 	int		j;
 	int		ant;
 	int		action;
-	int		act;
 
 	action = 1;
 	ant = 1;
@@ -63,14 +59,12 @@ void		ft_rotate(int max, int flow, t_way *cool, t_map *map)
 		{
 			j = -1;
 			while (++j < flow)
-				if ((act = ft_act(cool + max * j + i, map, &ant))
-				&& action < act)
-					action = act;
+				ft_act(cool + max * j + i, map, &ant, &action);
 		}
 		j = 0;
 		while (j < flow && ant <= map->ant_count)
 			ft_rerot((cool + max * j), &ant, &j, &action);
-		action == 2 ? write(1, "\n", 1) : 0;
+		action > 2 ? write(1, "\n", 1) : 0;
 	}
 }
 

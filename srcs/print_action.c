@@ -12,7 +12,7 @@
 
 #include "../includes/lem.h"
 
-int		print_action(t_way *cool)
+void		print_action(t_way *cool, int *action)
 {
 	int	*rs;
 	int	*rt;
@@ -25,13 +25,16 @@ int		print_action(t_way *cool)
 	as = &((cool - 1)->ant);
 	if (*rs >= 0 && *rt >= 0)
 	{
+		if (*action == 3)
+			write(1, " ", 1);
 		write(1, "L", 1);
 		ft_putnbr(*as);
 		write(1, "-", 1);
 		write(1, cool->room, ft_strlen(cool->room));
-		write(1, " ", 1);
+		*action = 3;
 	}
 	*at = *as;
 	*as = -1;
-	return (2);
+	if (*action < 2)
+		*action = 2;
 }

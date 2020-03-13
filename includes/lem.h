@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 14:58:30 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/13 14:11:20 by Elena            ###   ########.fr       */
+/*   Updated: 2020/03/12 22:02:36 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int					dinic(t_meta *all);
 ** Ant distribution algorithm
 */
 
-int					ft_act(t_way *cool, t_map *map, int *ant);
+void					ft_act(t_way *cool, t_map *map, int *ant, int *action);
 void				ft_rerot(t_way *cool, int *ant, int *j, int *action);
 void				ft_rotate(int max, int flow, t_way *cool, t_map *map);
 void				ft_queen(int max, int flow, int *wae, t_map *map);
@@ -143,7 +143,7 @@ void				ft_full(t_way *cool, int max, int row);
 
 void				ft_print_input(t_map map);
 void				ft_pr_f(t_meta *all);
-int					print_action(t_way *cool);
+void					print_action(t_way *cool, int *action);
 
 /*
 ** Error and memory management functions
