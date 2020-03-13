@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 11:54:51 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/12 22:09:04 by Elena            ###   ########.fr       */
+/*   Updated: 2020/03/13 09:45:50 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int			main(int ac, char **av)
 
 	if (ac == 1)
 	{
-		if (fill_map(&lemin))
-			find_paths(&lemin);
-		// ft_print_input(lemin);
+		if (!fill_map(&lemin))
+			put_error(&lemin, 1);
+		find_paths(&lemin);
 		free_struct(&lemin);
 	}
 	av = 0;
