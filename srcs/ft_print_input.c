@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 17:03:09 by Elena             #+#    #+#             */
-/*   Updated: 2020/03/13 12:53:36 by Elena            ###   ########.fr       */
+/*   Updated: 2020/03/16 16:44:30 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,25 @@
 
 static void	print_rooms(t_room *p_room)
 {
-	int			max_level;
-
-	max_level = 0;
 	while (p_room)
 	{
-		if (p_room->level > max_level)
-			max_level = p_room->level;
+		if (p_room->stat == 3)
+		{
+			if (p_room->stat == 2)
+				write(1, "##start\n", 8);
+			else if (p_room->stat == 3)
+				write(1, "##end\n", 6);
+			ft_putnbr(p_room->level);
+			write(1, " ", 1);
+			ft_putstr(p_room->name);
+			write(1, " ", 1);
+			ft_putnbr(p_room->x);
+			write(1, " ", 1);
+			ft_putnbr(p_room->y);
+			write(1, "\n", 1);
+		}
 		p_room = p_room->next;
 	}
-	printf("level %d\n", max_level);
 }
 
 void		ft_print_input(t_map map)
@@ -35,14 +44,26 @@ void		ft_print_input(t_map map)
 	i = 0;
 	p_room = map.rooms;
 	p_link = map.links;
-	while (p_link)
+	// ft_putnbr(map.ant_count);
+	// write(1, "\n", 1);
+	printf("room_count %d\n", map.room_count);
+	print_rooms(p_room);
+	/*while (p_link)
 	{
-		i++;
+		if (p_link->start->level == 6 && p_link->end->level == 7)
+		{
+			ft_putnbr(p_link->start->level);
+			write(1, " ", 1);
+			ft_putstr(p_link->start->name);
+			write(1, "-", 1);
+			ft_putstr(p_link->end->name);
+			write(1, " ", 1);
+			ft_putnbr(p_link->end->level);
+			write(1, "\n", 1);
+			i++;
+		}
 		p_link = p_link->next;
 	}
-	// printf("links %d\n", i);
-	printf("rooms %d\n", map.room_count);
-	printf("level %d\n", map.end->level);
-	print_rooms(p_room);
 	write(1, "\n", 1);
+	printf("i %d\n", i);*/
 }

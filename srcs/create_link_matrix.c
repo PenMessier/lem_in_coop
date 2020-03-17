@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_link_matrix.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 15:34:30 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/12 12:09:59 by frenna           ###   ########.fr       */
+/*   Updated: 2020/03/16 19:20:16 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,14 @@ int			create_link_matrix(t_map *map)
 	{
 		if (curr->start->level != curr->end->level)
 		{
-			i = curr->start->i;
-			j = curr->end->i;
-			map->all->c[i * map->all->n + j] = 1;
-			map->all->c[j * map->all->n + i] = 1;
+			if ((map->dead_end_lvl && (curr->end->level < map->dead_end_lvl
+				|| curr->end->level == map->end->level)) || !map->dead_end_lvl)
+			{
+				i = curr->start->i;
+				j = curr->end->i;
+				map->all->c[i * map->all->n + j] = 1;
+				map->all->c[j * map->all->n + i] = 1;
+			}
 		}
 		curr = curr->next;
 	}

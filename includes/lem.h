@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 14:58:30 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/12 22:02:36 by Elena            ###   ########.fr       */
+/*   Updated: 2020/03/16 18:00:28 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct		s_map
 	t_room			*end;
 	t_link			*links;
 	t_meta			*all;
+	int				dead_end_lvl;
 	int				ant_count;
 	int				room_count;
 }					t_map;
@@ -122,6 +123,7 @@ int					count_index_rooms(t_room *rooms);
 char				*get_room_name(t_map *map, int no);
 void				assign_level(t_map *map, int level);
 void				check_end_level(t_map *map);
+int					find_dead_end(t_map *map, int	check_lvl);
 
 /*
 ** Link structure utility functions
