@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   room_struct_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 12:14:32 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/12 14:06:01 by frenna           ###   ########.fr       */
+/*   Updated: 2020/03/23 10:35:52 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,11 @@ t_room		*find_room(t_room *rooms, char *name)
 	return (NULL);
 }
 
-int			count_index_rooms(t_room *rooms)
+int				count_index_rooms(t_room *rooms)
 {
 	t_room	*curr;
 	t_room	*start;
-	int		i;
+	int			i;
 
 	curr = rooms;
 	i = 0;
@@ -82,26 +82,21 @@ int			count_index_rooms(t_room *rooms)
 	{
 		if (curr->stat == 2)
 			start = curr;
-		curr->i = i;
+		curr->i = i++;
 		curr = curr->next;
-		i++;
 	}
 	if (start->i != 0)
 	{
 		curr = rooms;
-		while (curr)
-		{
-			if (curr->i == 0)
-				break ;
+		while (curr && curr->i != 0)
 			curr = curr->next;
-		}
 		curr->i = start->i;
 		start->i = 0;
 	}
 	return (i);
 }
 
-char		*get_room_name(t_map *map, int no)
+char			*get_room_name(t_map *map, int no)
 {
 	t_room	*tmp;
 

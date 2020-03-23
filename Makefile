@@ -3,16 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: frenna <frenna@student.42.fr>              +#+  +:+       +#+         #
+#    By: Elena <Elena@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/26 14:57:13 by frenna            #+#    #+#              #
-#    Updated: 2020/03/12 12:34:33 by frenna           ###   ########.fr        #
+#    Updated: 2020/03/23 09:35:48 by Elena            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = lem-in
 LIB = libft.a
 LIB_PATH = libft/
+READER_NAME = reader
 
 SRC_NAMES = main.c \
 	find_paths.c \
@@ -29,6 +30,7 @@ SRC_NAMES = main.c \
 	ft_parse.c \
 	valid_map_ants.c \
 	valid_struct.c \
+	valid_line_room.c \
 	memory_manag.c \
 	map_struct_utils.c \
 	room_struct_utils.c \
@@ -43,6 +45,11 @@ SRC_NAMES = main.c \
 SRC_DIR = srcs/
 SRCS = $(addprefix $(SRC_DIR), $(SRC_NAMES))
 
+READER_NAMES = reader.c valid_line_room.c reader_write_func.c \
+								ft_write_in_file.c
+READER_SRCS = $(addprefix $(SRC_DIR), $(READER_NAMES))
+READER_OBJ = $(addprefix $(OBJ_DIR), $(READER_NAMES:%.c=%.o))
+
 OBJ_DIR = obj/
 OBJ = $(addprefix $(OBJ_DIR), $(SRC_NAMES:%.c=%.o))
 
@@ -54,7 +61,7 @@ GREEN = \033[0;32m
 RED = \033[0;31m
 RESET = \033[0m
 
-all: $(NAME)
+all: $(NAME) $(READER_NAME)
 
 $(LIB): $(LIB_PATH)
 	@make -C $(LIB_PATH)
@@ -62,6 +69,10 @@ $(LIB): $(LIB_PATH)
 $(NAME): $(OBJ_DIR) $(OBJ) $(INCLUDES) $(LIB)
 	gcc $(FLAGS) $(LIB_PATH)$(LIB) -I $(INCLUDES) $(OBJ) -o $(NAME)
 	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
+
+$(READER_NAME): $(OBJ_DIR) $(READER_OBJ) $(INCLUDES) $(LIB)
+	gcc $(FLAGS) $(LIB_PATH)$(LIB) -I $(INCLUDES) $(READER_OBJ) -o $(READER_NAME)
+	@echo "$(READER_NAME): $(GREEN)$(READER_NAME) was created$(RESET)"
 
 $(OBJ_DIR):
 	@mkdir -p obj
@@ -78,6 +89,7 @@ clean:
 
 fclean: clean
 	/bin/rm -f $(NAME)
+	/bin/rm -f $(READER_NAME)
 	@make fclean -C $(LIB_PATH)
 	@echo "$(NAME): $(RED)$(LIB) was deleted$(RESET)"
 

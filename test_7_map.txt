@@ -1,11 +1,12 @@
 3
 ##start
-start 1 1
+start 5 0
 ##end
-end 2 2
-salle1 13 3
-salle2 23 3
-salle3 33 3
+end 10 5
+salle1 2 5
+salle2 7 5
+salle3 12 5
+start-start
 start-salle1
 start-salle2
 start-salle3
@@ -13,6 +14,6 @@ salle1-salle2
 salle1-salle3
 salle2-salle3
 end-end
-#salle3-end
-#salle2-end
-#salle1-end
+salle3-end
+salle2-end
+salle1-end

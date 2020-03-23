@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:19:18 by Elena             #+#    #+#             */
-/*   Updated: 2020/03/16 19:19:44 by Elena            ###   ########.fr       */
+/*   Updated: 2020/03/17 14:34:39 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void		init_map(t_map *map)
 	map->all = NULL;
 }
 
-int			fill_map(t_map *lemin)
+int			fill_map(t_map *lemin, int fd)
 {
 	int		nl;
 	int		isvalid;
@@ -30,7 +30,7 @@ int			fill_map(t_map *lemin)
 	nl = 2;
 	isvalid = 1;
 	init_map(lemin);
-	while (get_next_line(0, &input))
+	while (get_next_line(fd, &input))
 	{
 		ft_putstr(input);
 		write(1, "\n", 1);

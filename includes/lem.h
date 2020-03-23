@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 14:58:30 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/16 18:00:28 by Elena            ###   ########.fr       */
+/*   Updated: 2020/03/23 09:28:42 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ typedef struct		s_map
 void				init_map(t_map *map);
 void				ft_init_meta(t_meta *meta);
 int					ft_parse(char *input, t_map *map, int *nl);
-int					fill_map(t_map *lemin);
+int					fill_map(t_map *lemin, int fd);
 
 /*
 ** Validation functions
@@ -83,6 +83,9 @@ int					valid_ants(char *input, t_map *map);
 int					valid_room(char *input, t_map *map, int *nl);
 int					valid_link(char *input, t_map *map);
 int					valid_map(t_map *map);
+int					valid_line_room(char *s, int *x, int *y, int *li);
+int					find_coord(char *s, int *i);
+
 
 /*
 ** Dinic algorithm functions
@@ -145,7 +148,7 @@ void				ft_full(t_way *cool, int max, int row);
 
 void				ft_print_input(t_map map);
 void				ft_pr_f(t_meta *all);
-void					print_action(t_way *cool, int *action);
+void				print_action(t_way *cool, int *action);
 
 /*
 ** Error and memory management functions
@@ -154,5 +157,15 @@ void					print_action(t_way *cool, int *action);
 void				put_error(t_map *map, int r);
 void				free_struct(t_map *map);
 void				free_meta(t_meta *all);
+
+/*
+** Functions to send data in json file
+*/
+
+void				write_ants(int fd, char *input, int *f);
+void				write_room(int fd, char *input);
+void				write_link(int fd, char *input);
+void				write_step(int fd, char *input);
+int					ft_write_in_file(int fd, char *input, int *f, int *check);
 
 #endif

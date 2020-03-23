@@ -6,13 +6,13 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 09:59:05 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/16 19:36:18 by Elena            ###   ########.fr       */
+/*   Updated: 2020/03/23 10:30:22 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem.h"
 
-void		check_end_level(t_map *map)
+void			check_end_level(t_map *map)
 {
 	t_room	*curr;
 
@@ -25,7 +25,7 @@ void		check_end_level(t_map *map)
 	}
 }
 	
-void		assign_level(t_map *map, int level)
+void			assign_level(t_map *map, int level)
 {
 	t_link	*cur_link;
 
@@ -47,11 +47,13 @@ void		assign_level(t_map *map, int level)
 		assign_level(map, level + 1);
 }
 
-int		find_dead_end(t_map *map, int	check_lvl)
+int				find_dead_end(t_map *map, int	check_lvl)
 {
 	t_link	*curr;
 	int			cur_lvl;
 
+	if (check_lvl < 0)
+		return (0);
 	curr = map->links;
 	while (curr)
 	{
