@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/28 11:27:17 by Elena             #+#    #+#             */
-/*   Updated: 2020/04/28 11:28:47 by Elena            ###   ########.fr       */
+/*   Updated: 2020/04/28 20:54:42 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@ void			free_list(t_list **list)
 {
 	t_list	*tmp;
 
-	if (!(*list))
+	if (!*list)
+	{
 		return ;
+	}
 	while ((*list)->next != NULL)
 	{
 		tmp = *list;
@@ -33,28 +35,18 @@ void			free_list(t_list **list)
 	*list = NULL;
 }
 
-void			free_list_line(t_list **list)
+void			free_list_line(t_list *list)
 {
 	t_list	*tmp;
 
-	if (*list)
+	if (!list)
+		return ;
+	while (list)
 	{
-		while ((*list)->next != NULL)
-		{
-			tmp = *list;
-			*list = tmp->next;
-			tmp->next = NULL;
-			free(tmp->data);
-			tmp->data = NULL;
-			free(tmp);
-			tmp = NULL;
-		}
-		if (*list)
-			(*list)->next = NULL;
-		free((*list)->data);
-		(*list)->data = NULL;
-		if (list)
-			free(*list);
-		*list = NULL;
+		if (list->data)
+			free(list->data);
+		tmp = list->next;
+		free(list);
+		list = tmp;
 	}
 }

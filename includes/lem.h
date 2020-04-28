@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 14:58:30 by frenna            #+#    #+#             */
-/*   Updated: 2020/04/28 18:30:06 by Elena            ###   ########.fr       */
+/*   Updated: 2020/04/28 20:45:11 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void				ft_print(t_map *map);
 void				put_error(t_map *map, int error);
 void				free_struct(t_map *map);
 void				free_list(t_list **list);
-void				free_list_line(t_list **list);
+void				free_list_line(t_list *list);
 
 /*
 ** Functions to send data in json file

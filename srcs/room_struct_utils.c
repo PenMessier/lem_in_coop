@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 12:14:32 by frenna            #+#    #+#             */
-/*   Updated: 2020/04/28 13:35:54 by Elena            ###   ########.fr       */
+/*   Updated: 2020/04/28 20:56:08 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_room		*create_new_room(int x, int y, int li, char *name)
 	new->pred = NULL;
 	new->succ = NULL;
 	new->best_succ = NULL;
+	new->links = NULL;
 	return (new);
 }
 
