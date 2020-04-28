@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Lemin</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="viewport"
+      content="user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.4.0.min.js"
+      integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://kit.fontawesome.com/1ce2b9acf1.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="./cytoscape.min.js"></script>
+
+    <script type="text/javascript" src="./lemin-simple.js"></script>
+    <script type="text/javascript" src="./controls-simple.js"></script>
+    <script type="text/javascript" src="./lemin.js"></script>
+    <script type="text/javascript" src="./controls.js"></script>
+    <script type="text/javascript" src="./main.js"></script>
+
+    <link rel="stylesheet" href="./main.css" />
+  </head>
+  <body>
+    <div id="main" class="main"></div>
+
+    <div id="controls-simple" class="controls-simple d-none">
+      <button class="btn btn-outline-success" data-play>
+        <i class="fas fa-play"></i>
+      </button>
+    </div>
+
+    <div id="controls" class="controls d-none">
+      <div class="d-flex flex-row">
+        <div class="btn-group">
+          <button class="btn btn-sm btn-outline-primary" data-play-pause>
+            <i class="fas fa-play" data-icon></i>
+          </button>
+          <button class="btn btn-sm btn-outline-secondary" data-reset>
+            <i class="fas fa-stop"></i>
+          </button>
+        </div>
+        <div class="flex-fill align-self-center px-2">
+          <input type="range" class="custom-range steps" data-step />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

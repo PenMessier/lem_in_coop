@@ -6,54 +6,37 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 15:34:11 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/13 15:34:33 by Elena            ###   ########.fr       */
+/*   Updated: 2020/04/28 13:27:53 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem.h"
 
-void	find_paths(t_map *map)
+void	ft_one_line(t_map *map)
 {
 	int	i;
-	int	j;
-	int	*wae;
-	int flow;
-	int	max;
 
-	i = 0;
-	j = 0;
-	if (!(map->all = (t_meta *)malloc(sizeof(t_meta))))
-		put_error(map, 1);
-	ft_init_meta(map->all);
-	if (!create_link_matrix(map))
-		put_error(map, 1);
-	flow = dinic(map->all);
-	if (flow < 0)
-		put_error(map, 1);
-	if (!flow)
-		put_error(map, 10);
-	if (!(wae = (int *)malloc(sizeof(int) * map->room_count * flow)))
-		put_error(map, 1);
-	ft_memset(wae, -1, map->room_count * flow * sizeof(int));
-	max = ft_nodewae(map->all, wae, flow);
-	/*printf("max %d\n", max);
-	printf("flow %d\n", flow);
-	while (i < map->room_count * flow)
+	i = 1;
+	while (i <= map->ant_count)
 	{
-		if ((i != 0 && !( i % map->room_count)) || i == map->room_count * flow - 1)
-		{
-			printf("\n");
-			printf("%d", j);
-			j = 0;
-			printf("\n");
-		}
-		if (wae[i] != -1)
-		{
-			j++;
-			printf("%d ", wae[i]);
-		}
+		write(1, "L", 1);
+		ft_putnbr(i);
+		write(1, "-", 1);
+		write(1, map->end->name, ft_strlen(map->end->name));
+		write(1, " ", 1);
 		i++;
-	}*/
-	ft_queen(max, flow, wae, map);
-	free(wae);
+	}
+	write(1, "\n", 1);
+}
+
+void	find_paths(t_map *map)
+{
+	ft_refill_map(map);
+	if (map->ant_count != 0)
+	{
+		if (line_find(map->start, map->end))
+			ft_one_line(map);
+		else
+			ft_best(map);
+	}
 }

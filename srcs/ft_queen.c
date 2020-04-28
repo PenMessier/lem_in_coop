@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_queen.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 15:20:30 by gerenfor          #+#    #+#             */
-/*   Updated: 2020/03/12 11:52:51 by frenna           ###   ########.fr       */
+/*   Updated: 2020/04/05 11:27:28 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem.h"
 
-void			ft_act(t_way *cool, t_map *map, int *ant, int *action)
+void		ft_act(t_way *cool, t_map *map, int *ant, int *action)
 {
 	int		*rs;
 	int		*rt;
@@ -23,7 +23,7 @@ void			ft_act(t_way *cool, t_map *map, int *ant, int *action)
 	rs = &((cool - 1)->roomno);
 	at = &(cool->ant);
 	as = &((cool - 1)->ant);
-	if ((*rt == map->all->s || *rt < 0) && *as < 0 && *ant <= map->ant_count)
+	if ((*rt == map->start->i || *rt < 0) && *as < 0 && *ant <= map->ant_count)
 	{
 		*at = *ant;
 		*ant = *ant + 1;
@@ -66,19 +66,4 @@ void		ft_rotate(int max, int flow, t_way *cool, t_map *map)
 			ft_rerot((cool + max * j), &ant, &j, &action);
 		action > 2 ? write(1, "\n", 1) : 0;
 	}
-}
-
-void		ft_queen(int max, int flow, int *wae, t_map *map)
-{
-	t_way	cool[(max + 1) * flow];
-	int		i;
-
-	ft_full(cool, max + 1, flow);
-	i = 0;
-	while (i < flow)
-	{
-		ft_becool(cool + ((max + 1) * i), wae + map->all->n * i, map);
-		i++;
-	}
-	ft_rotate(max + 1, flow, cool, map);
 }

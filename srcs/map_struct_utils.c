@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:19:18 by Elena             #+#    #+#             */
-/*   Updated: 2020/03/17 14:34:39 by Elena            ###   ########.fr       */
+/*   Updated: 2020/04/28 11:38:39 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,34 +18,33 @@ void		init_map(t_map *map)
 	map->links = NULL;
 	map->start = NULL;
 	map->end = NULL;
-	map->all = NULL;
+	map->list = NULL;
 }
 
-int			fill_map(t_map *lemin, int fd)
+void		fill_map(t_map *lemin, int fd)
 {
 	int		nl;
+	int		f;
 	int		isvalid;
 	char	*input;
 
 	nl = 2;
-	isvalid = 1;
 	init_map(lemin);
-	while (get_next_line(fd, &input))
+	while ((f = get_next_line(fd, &input)) > 0)
 	{
+		if ((isvalid = ft_parse(input, lemin, &nl)) < 0)
+		{
+			free(input ? input : NULL);
+			put_error(lemin, isvalid);
+		}
 		ft_putstr(input);
 		write(1, "\n", 1);
-		if (isvalid && !ft_parse(input, lemin, &nl))
-			isvalid = 0;
 		free(input ? input : NULL);
 	}
+	if (f < 0)
+		put_error(lemin, -12);
 	write(1, "\n", 1);
-	if (!lemin->rooms || !lemin->links || !lemin->start || !lemin->end || !isvalid)
-		return (0);
+	if ((nl = valid_map(lemin)) < 0)
+		put_error(lemin, nl);
 	lemin->room_count = count_index_rooms(lemin->rooms);
-	if (!valid_map(lemin))
-		return (0);
-	assign_level(lemin, 0);
-	check_end_level(lemin);
-	lemin->dead_end_lvl = find_dead_end(lemin, lemin->end->level - 1);
-	return (1);
 }

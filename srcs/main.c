@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 11:54:51 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/23 10:31:08 by Elena            ###   ########.fr       */
+/*   Updated: 2020/04/27 18:53:38 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,21 @@ int			main(int ac, char **av)
 
 	fd = 0;
 	if (ac > 2)
-		put_error(&lemin, 1);
+	{
+		perror("Invalid number of arguments");
+		exit(2);
+	}
 	else if (ac == 2)
-		if (!(fd = open(av[1], O_RDONLY)))
-			put_error(&lemin, 1);
-	if (!fill_map(&lemin, fd))
-		put_error(&lemin, 1);
+	{
+		if ((fd = open(av[1], O_RDONLY)) < 0)
+		{
+			perror("Opening file failed");
+			exit(2);
+		}
+	}
+	fill_map(&lemin, fd);
 	find_paths(&lemin);
 	free_struct(&lemin);
+	system("leaks -q lem-in >&2");
 	return (0);
 }

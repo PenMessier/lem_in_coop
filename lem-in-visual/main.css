@@ -1,0 +1,31 @@
+.main {
+  height: calc(100% - 60px);
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  background-color: black;
+}
+
+.controls-simple {
+  z-index: 1000;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+
+.controls {
+  z-index: 1000;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+
+  border-top: 1px solid #6c757d;
+  background: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+}

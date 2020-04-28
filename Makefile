@@ -6,92 +6,104 @@
 #    By: Elena <Elena@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/26 14:57:13 by frenna            #+#    #+#              #
-#    Updated: 2020/03/23 09:35:48 by Elena            ###   ########.fr        #
+#    Updated: 2020/04/28 16:57:33 by Elena            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = lem-in
-LIB = libft.a
-LIB_PATH = libft/
+
 READER_NAME = reader
 
-SRC_NAMES = main.c \
-	find_paths.c \
-	create_link_matrix.c \
-	dinic.c \
-	ft_pr_f.c \
-	bfs.c \
-	dfs.c \
-	ft_init_meta.c \
-	ft_min.c \
-	ft_dub.c \
-	ft_undub.c \
-	ft_nodewae.c \
-	ft_parse.c \
-	valid_map_ants.c \
-	valid_struct.c \
-	valid_line_room.c \
-	memory_manag.c \
-	map_struct_utils.c \
-	room_struct_utils.c \
-	link_struct_utils.c \
-	way_struct_utils.c \
-	assign_room_levels.c \
-	ft_print_input.c \
-	ft_queen.c \
-	print_action.c \
-	put_error.c
+FLAGS = -Wall -Werror -Wextra
 
-SRC_DIR = srcs/
-SRCS = $(addprefix $(SRC_DIR), $(SRC_NAMES))
+INC = ./includes/
+INCLUDES = ./$(LIBFT_PATH)includes/
+INCLUDE_FILES = $(INC)lem.h \
+								$(INC)datatypes.h \
+								$(INCLUDES)libft.h
 
-READER_NAMES = reader.c valid_line_room.c reader_write_func.c \
-								ft_write_in_file.c
-READER_SRCS = $(addprefix $(SRC_DIR), $(READER_NAMES))
-READER_OBJ = $(addprefix $(OBJ_DIR), $(READER_NAMES:%.c=%.o))
+LIB = libft/libft.a
 
-OBJ_DIR = obj/
-OBJ = $(addprefix $(OBJ_DIR), $(SRC_NAMES:%.c=%.o))
+SRCS_PATH = srcs/
+OBJ_PATH  = obj/
+LIBFT_PATH = libft/
 
-INCLUDES = includes/lem.h
+SRC_NAMES = count_index_rooms.c \
+			find_paths.c \
+			ft_best.c \
+			ft_combine_paths.c \
+			ft_distribute_ants.c \
+			ft_find_more_paths.c \
+			ft_find_short_path.c \
+			ft_free_list.c \
+			ft_full.c \
+			ft_line.c \
+			ft_list.c \
+			ft_modify_graph.c \
+			ft_parse.c \
+			ft_print_struct.c \
+			ft_queen.c \
+			ft_refill_map.c \
+			ft_restore_graph.c \
+			ft_set.c \
+			ft_solution_build.c \
+			ft_solution_improve.c \
+			link_struct_utils.c \
+			main.c \
+			map_struct_utils.c \
+			memory_manag.c \
+			print_action.c \
+			put_error.c \
+			room_struct_utils.c \
+			valid_line_room.c \
+			valid_map_ants.c \
+			valid_struct.c
 
-FLAGS =  -Wall -Wextra -Werror
+SRCS = $(addprefix $(SRCS_PATH), $(SRC_NAMES))
+OBJ = $(addprefix $(OBJ_PATH), $(SRC_NAMES:.c=.o))
 
-GREEN = \033[0;32m
-RED = \033[0;31m
-RESET = \033[0m
+READER_NAMES = reader.c \
+							reader_write_func.c \
+							ft_write_in_file.c
+
+READER_SRCS = $(addprefix $(SRCS_PATH), $(READER_NAMES))
+READER_OBJ = $(addprefix $(OBJ_PATH), $(READER_NAMES:%.c=%.o))
 
 all: $(NAME) $(READER_NAME)
 
-$(LIB): $(LIB_PATH)
-	@make -C $(LIB_PATH)
+$(NAME): $(OBJ) $(LIB) $(INCLUDE_FILES)
+	@gcc $(FLAGS) $(OBJ) -I $(INC) -I $(INCLUDES) $(LIB) -o $(NAME)
+	@echo "\033[32mBinary \033[1;32m$(NAME)\033[1;0m\033[32m created.\033[0m"
 
-$(NAME): $(OBJ_DIR) $(OBJ) $(INCLUDES) $(LIB)
-	gcc $(FLAGS) $(LIB_PATH)$(LIB) -I $(INCLUDES) $(OBJ) -o $(NAME)
-	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
+$(READER_NAME): $(READER_OBJ) $(LIB) $(INCLUDE_FILES) $(OBJ_PATH)valid_line_room.o
+	@gcc $(FLAGS) $(READER_OBJ) $(OBJ_PATH)valid_line_room.o -I $(INC) -I $(INCLUDES) $(LIB) -o $(READER_NAME)
+	@echo "\033[32mBinary \033[1;32m$(READER_NAME)\033[1;0m\033[32m created.\033[0m"
 
-$(READER_NAME): $(OBJ_DIR) $(READER_OBJ) $(INCLUDES) $(LIB)
-	gcc $(FLAGS) $(LIB_PATH)$(LIB) -I $(INCLUDES) $(READER_OBJ) -o $(READER_NAME)
-	@echo "$(READER_NAME): $(GREEN)$(READER_NAME) was created$(RESET)"
+$(LIB): $(LIBFT_PATH)
+	@make -C $(LIBFT_PATH)
 
-$(OBJ_DIR):
+$(OBJ): $(SRCS) $(INCLUDE_FILES)
 	@mkdir -p obj
-	@echo "$(NAME): $(GREEN) $(OBJ_DIR) was created$(RESET)"
+	@gcc -c $(FLAGS) -I $(INC) -I $(INCLUDES) $(SRCS)
+	@mv $(SRC_NAMES:.c=.o) $(OBJ_PATH)
+	@echo "\033[34m\033[1mCompilation of \033[0m\033[36m$(OBJ)\033[1m\033[34m done.\033[0m"
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c
-	gcc $(FLAGS) -c $< -o $@
+$(READER_OBJ): $(READER_SRCS) $(INCLUDE_FILES)
+		@gcc -c $(FLAGS) -I $(INC) -I $(INCLUDES) $(READER_SRCS)
+		@mv $(READER_NAMES:.c=.o) $(OBJ_PATH)
+		@echo "\033[34m\033[1mCompilation of \033[0m\033[36m$(READER_OBJ)\033[1m\033[34m done.\033[0m"
 
 clean:
-	/bin/rm -rf $(OBJ_DIR)
-	@make clean -C $(LIB_PATH)
-	@echo "$(NAME): $(RED)$(OBJ_DIR) was deleted$(RESET)"
-	@echo "$(NAME): $(RED)object files were deleted$(RESET)"
+	@make -C $(LIBFT_PATH) clean
+	@/bin/rm -rf $(OBJ_PATH)
+	@echo "\033[31mObjects files \033[1;31m$(OBJ)\033[1;0m\033[31m removed.\033[0m"
 
 fclean: clean
-	/bin/rm -f $(NAME)
-	/bin/rm -f $(READER_NAME)
-	@make fclean -C $(LIB_PATH)
-	@echo "$(NAME): $(RED)$(LIB) was deleted$(RESET)"
+	@make -C $(LIBFT_PATH)/ fclean
+	@/bin/rm -rf $(NAME)
+	@/bin/rm -rf $(READER_NAME)
+	@echo "\033[31mBin \033[1;31m$(NAME)\033[1;0m\033[31m removed.\033[0m"
+	@echo "\033[31mBin \033[1;31m$(READER_NAME)\033[1;0m\033[31m removed.\033[0m"
 
 re: fclean all
 

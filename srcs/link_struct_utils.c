@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   link_struct_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 17:57:55 by Elena             #+#    #+#             */
-/*   Updated: 2020/03/12 13:52:56 by frenna           ###   ########.fr       */
+/*   Updated: 2020/04/28 11:04:41 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,4 @@ int			add_link(t_link **links, t_room *start, t_room *end)
 		curr = curr->next;
 	curr->next = new;
 	return (1);
-}
-
-void		swap_rooms(t_link *link)
-{
-	t_room	*tmp;
-
-	tmp = link->start;
-	link->start = link->end;
-	link->end = tmp;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   memory_manag.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: frenna <frenna@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 13:12:45 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/12 11:53:30 by frenna           ###   ########.fr       */
+/*   Updated: 2020/04/28 11:58:47 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,15 @@ static void	free_rooms(t_room *rooms)
 {
 	t_room	*curr;
 
+	if (!rooms)
+		return ;
 	while (rooms)
 	{
+		if (rooms)
+		{
+			if (rooms->links)
+				free_list_line(&(rooms->links));
+		}
 		if (rooms->name)
 			free(rooms->name);
 		curr = rooms->next;
@@ -30,6 +37,8 @@ static void	free_links(t_link *links)
 {
 	t_link	*curr;
 
+	if (!links)
+		return ;
 	while (links)
 	{
 		curr = links->next;
@@ -38,29 +47,12 @@ static void	free_links(t_link *links)
 	}
 }
 
-void		free_meta(t_meta *all)
-{
-	if (all && all->c)
-		free(all->c);
-	if (all && all->f)
-		free(all->f);
-	if (all && all->d)
-		free(all->d);
-	if (all && all->ptr)
-		free(all->ptr);
-	if (all && all->q)
-		free(all->q);
-}
-
 void		free_struct(t_map *map)
 {
-	if (map && map->rooms)
-		free_rooms(map->rooms);
-	if (map && map->links)
-		free_links(map->links);
-	if (map && map->all)
+	if (map)
 	{
-		free_meta(map->all);
-		free(map->all ? map->all : NULL);
+		free_list(&(map->list));
+		free_rooms(map->rooms);
+		free_links(map->links);
 	}
 }

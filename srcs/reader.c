@@ -6,12 +6,11 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 17:06:05 by Elena             #+#    #+#             */
-/*   Updated: 2020/03/23 09:36:19 by Elena            ###   ########.fr       */
+/*   Updated: 2020/04/28 18:39:37 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem.h"
-
 
 static char	*save_start_end(char *input)
 {
@@ -35,20 +34,33 @@ static char	*save_start_end(char *input)
 
 static void	write_start_end(int fd, char *start, char *end)
 {
-	write (fd, "\t\"start\": \"", 11);
-	write (fd, start, ft_strlen(start));
-	write (fd, "\"", 1);
-	write (fd, ",\n", 2);
-	write (fd, "\t\"end\": \"", 9);
-	write (fd, end, ft_strlen(end));
-	write (fd, "\"\n", 2);
-	free (start ? start : NULL);
-	free (end ? end : NULL);
+	write(fd, "\t\"start\": \"", 11);
+	write(fd, start, ft_strlen(start));
+	write(fd, "\"", 1);
+	write(fd, ",\n", 2);
+	write(fd, "\t\"end\": \"", 9);
+	write(fd, end, ft_strlen(end));
+	write(fd, "\"\n", 2);
+	write(fd, "}\n", 2);
+	free(start ? start : NULL);
+	free(end ? end : NULL);
+}
+
+static void	read_line(int *f, char *input, char **start, char **end)
+{
+	if (*f == 0 || *f == 1)
+	{
+		if (*f == 0)
+			*start = save_start_end(input);
+		else
+			*end = save_start_end(input);
+		*f = 3;
+	}
 }
 
 static void	reader(int fd)
 {
-	char 			*input;
+	char			*input;
 	char			*start;
 	char			*end;
 	int				check;
@@ -56,29 +68,29 @@ static void	reader(int fd)
 
 	f = 2;
 	check = 0;
-	while (get_next_line(0, &input))
+	start = NULL;
+	end = NULL;
+	while (get_next_line(0, &input) > 0)
 	{
-		if (f == 0 || f == 1)
+		read_line(&f, input, &start, &end);
+		if (!ft_write_in_file(fd, input, &f, &check))
 		{
-			if (f == 0)
-				start = save_start_end(input);
-			if (f == 1)
-				end = save_start_end(input);
-			f = 3;
+			free(start ? start : NULL);
+			free(end ? end : NULL);
+			return ;
 		}
-		ft_write_in_file(fd, input, &f, &check);
 		free(input ? input : NULL);
 	}
 	if (f == 5)
-		write (fd, "\n\t],\n", 5);
-	write_start_end(fd, start, end);
-	write (fd, "}\n", 2);
+		write(fd, "\n\t],\n", 5);
+	if (start && end)
+		write_start_end(fd, start, end);
 }
 
-int					main(int ac, char **av)
+int			main(int ac, char **av)
 {
-	int				fd;
-	
+	int		fd;
+
 	if (ac == 2)
 	{
 		fd = open(av[1], O_WRONLY);

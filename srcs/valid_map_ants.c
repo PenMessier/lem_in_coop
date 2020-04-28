@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 12:04:56 by frenna            #+#    #+#             */
-/*   Updated: 2020/03/12 21:45:46 by Elena            ###   ########.fr       */
+/*   Updated: 2020/04/28 12:05:36 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ int			valid_ants(char *input, t_map *map)
 {
 	char	*tmp;
 
+	tmp = NULL;
 	map->ant_count = ft_atoi(input);
-	if (ft_strcmp((tmp = ft_itoa(map->ant_count)), input))
+	if (map->ant_count < 0 || ft_strcmp((tmp = ft_itoa(map->ant_count)), input))
 	{
 		free(tmp ? tmp : NULL);
 		return (0);
@@ -35,6 +36,12 @@ int			valid_map(t_map *map)
 	start_link = 0;
 	end_link = 0;
 	cur_link = map->links;
+	if (!map->rooms)
+		return (-10);
+	if (!map->links)
+		return (-11);
+	if (!map->start || !map->end)
+		return (-2);
 	while (cur_link)
 	{
 		if (cur_link->start->stat == 3 || cur_link->end->stat == 3)
@@ -43,5 +50,7 @@ int			valid_map(t_map *map)
 			start_link = 1;
 		cur_link = cur_link->next;
 	}
-	return (end_link && start_link);
+	if (!end_link || !start_link)
+		return (-9);
+	return (1);
 }
