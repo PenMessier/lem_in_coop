@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 13:03:48 by frenna            #+#    #+#             */
-/*   Updated: 2020/04/28 12:07:31 by Elena            ###   ########.fr       */
+/*   Updated: 2020/04/29 09:36:27 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,23 @@ static int	valid_line_link(char *s)
 	return (min);
 }
 
+static int	find_double_link(t_link *links, t_room *start, t_room *end)
+{
+	t_link	*curr;
+
+	curr = links;
+	if (!links)
+		return (1);
+	while (curr)
+	{
+		if ((curr->start == start && curr->end == end)
+			|| (curr->start == end && curr->end == start))
+			return (0);
+		curr = curr->next;
+	}
+	return (1);
+}
+
 int			valid_link(char *input, t_map *map)
 {
 	int		mi;
@@ -41,12 +58,11 @@ int			valid_link(char *input, t_map *map)
 		ft_free_array(t, 1);
 		return (-7);
 	}
-	else
-	{
-		if (!add_link(&map->links, start, end))
-			return (-5);
-	}
 	ft_free_array(t, 1);
+	if (!find_double_link(map->links, start, end))
+		return (-13);
+	if (!add_link(&map->links, start, end))
+		return (-5);
 	return (1);
 }
 

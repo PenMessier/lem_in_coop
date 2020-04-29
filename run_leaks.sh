@@ -1,0 +1,1 @@
+leaks --atExit -- ./lem-in < $1

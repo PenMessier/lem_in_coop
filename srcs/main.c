@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 11:54:51 by frenna            #+#    #+#             */
-/*   Updated: 2020/04/27 18:53:38 by Elena            ###   ########.fr       */
+/*   Updated: 2020/04/29 09:58:47 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ int			main(int ac, char **av)
 	fill_map(&lemin, fd);
 	find_paths(&lemin);
 	free_struct(&lemin);
-	system("leaks -q lem-in >&2");
+	// system("leaks -q lem-in >&2");
 	return (0);
 }
