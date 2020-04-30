@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 11:48:34 by frenna            #+#    #+#             */
-/*   Updated: 2020/04/29 10:59:35 by Elena            ###   ########.fr       */
+/*   Updated: 2020/04/30 12:40:18 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@ static void	other_errors(int error)
 	else if (error == -14)
 	{
 		ft_putstr_fd("Error: invalid number of arguments\n", 2);
-		ft_putstr_fd("Usage: ./lem-in <ant_farm_map>\n", 2);
+		ft_putstr_fd("Usage: ./lem-in [ant_farm_map]\n", 2);
 	}
 	else if (error == -15)
 		ft_putstr_fd("Error: opening file failed\n", 2);
+	else if (error == -16)
+		ft_putstr_fd("Error: no solution\n", 2);
 	else
 		ft_putstr_fd("Error: unknown error\n", 2);
 }

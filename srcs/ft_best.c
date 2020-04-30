@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/28 11:53:03 by Elena             #+#    #+#             */
-/*   Updated: 2020/04/28 15:44:07 by Elena            ###   ########.fr       */
+/*   Updated: 2020/04/30 12:12:21 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ void					ft_best(t_map *map)
 		++path_count;
 		solution_improve(&(best_sol), map, map->start, path_count);
 	}
+	if (!path_count)
+		put_error(map, -16);
 	if (best_sol)
 	{
 		ft_print_sol(best_sol->n_paths, ft_sol_len(best_sol), best_sol, map);

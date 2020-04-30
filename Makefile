@@ -6,7 +6,7 @@
 #    By: Elena <Elena@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/26 14:57:13 by frenna            #+#    #+#              #
-#    Updated: 2020/04/28 16:57:33 by Elena            ###   ########.fr        #
+#    Updated: 2020/04/29 14:04:01 by Elena            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,12 +71,12 @@ READER_OBJ = $(addprefix $(OBJ_PATH), $(READER_NAMES:%.c=%.o))
 
 all: $(NAME) $(READER_NAME)
 
-$(NAME): $(OBJ) $(LIB) $(INCLUDE_FILES)
-	@gcc $(FLAGS) $(OBJ) -I $(INC) -I $(INCLUDES) $(LIB) -o $(NAME)
+$(NAME): $(OBJ) $(LIB)
+	@gcc $(FLAGS) $(OBJ) $(LIB) -o $(NAME)
 	@echo "\033[32mBinary \033[1;32m$(NAME)\033[1;0m\033[32m created.\033[0m"
 
-$(READER_NAME): $(READER_OBJ) $(LIB) $(INCLUDE_FILES) $(OBJ_PATH)valid_line_room.o
-	@gcc $(FLAGS) $(READER_OBJ) $(OBJ_PATH)valid_line_room.o -I $(INC) -I $(INCLUDES) $(LIB) -o $(READER_NAME)
+$(READER_NAME): $(READER_OBJ) $(LIB) $(OBJ_PATH)valid_line_room.o
+	@gcc $(FLAGS) $(READER_OBJ) $(OBJ_PATH)valid_line_room.o $(LIB) -o $(READER_NAME)
 	@echo "\033[32mBinary \033[1;32m$(READER_NAME)\033[1;0m\033[32m created.\033[0m"
 
 $(LIB): $(LIBFT_PATH)
@@ -99,7 +99,7 @@ clean:
 	@echo "\033[31mObjects files \033[1;31m$(OBJ)\033[1;0m\033[31m removed.\033[0m"
 
 fclean: clean
-	@make -C $(LIBFT_PATH)/ fclean
+	@make -C $(LIBFT_PATH) fclean
 	@/bin/rm -rf $(NAME)
 	@/bin/rm -rf $(READER_NAME)
 	@echo "\033[31mBin \033[1;31m$(NAME)\033[1;0m\033[31m removed.\033[0m"

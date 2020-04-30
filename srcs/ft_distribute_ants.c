@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/28 11:33:24 by Elena             #+#    #+#             */
-/*   Updated: 2020/04/28 11:35:16 by Elena            ###   ########.fr       */
+/*   Updated: 2020/04/30 12:16:05 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,6 @@ static int	distribute_evenly(int ant_count, t_solution *solution)
 	d = ant_count / i;
 	ant_count -= d * i;
 	solution->n_turns = solution->paths[i - 1].length + d - 1;
-	if (solution->n_turns < 0)
-	{
-		write(2, "too many ants\n", 14);
-		exit(1);
-	}
 	compute_ants_per_path(solution, i);
 	return (ant_count);
 }
