@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/12 11:54:51 by frenna            #+#    #+#             */
-/*   Updated: 2020/04/30 16:06:06 by Elena            ###   ########.fr       */
+/*   Created: 2019/04/09 21:17:07 by frenna            #+#    #+#             */
+/*   Updated: 2019/06/03 12:52:16 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/lem.h"
+#include "libft.h"
 
-int			main(int ac, char **av)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
-	t_map	lemin;
-	int		fd;
+	char	*str;
+	size_t	i;
 
-	fd = 0;
-	if (ac > 2)
-		put_error(NULL, -14);
-	else if (ac == 2)
-		if ((fd = open(av[1], O_RDONLY)) < 0)
-			put_error(NULL, -15);
-	fill_map(&lemin, fd);
-	find_paths(&lemin);
-	free_struct(&lemin);
-	// system("leaks -q lem-in >&2");
-	return (0);
+	if (!s1 && !s2)
+		return (0);
+	i = ft_strlen(s1) + ft_strlen(s2);
+	str = (char *)malloc(i + 1);
+	if (!str)
+		return (0);
+	ft_strcpy(str, s1);
+	ft_strcat(str, s2);
+	return (str);
 }

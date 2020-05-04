@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 17:21:32 by frenna            #+#    #+#             */
-/*   Updated: 2020/04/29 14:04:58 by Elena            ###   ########.fr       */
+/*   Updated: 2020/05/04 13:15:57 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,14 @@
 
 # define BUFF_SIZE 10
 
-typedef	struct		s_node
+typedef struct		s_kor
 {
-	char			*content;
 	int				fd;
-	size_t			content_size;
-	struct s_node	*next;
-}					t_node;
+	char			*line;
+	struct s_kor	*next;
+}					t_kor;
 
 int					get_next_line(const int fd, char **line);
-void				ft_init(t_node **s, char *content, int fd, size_t c_size);
-void				ft_line(t_node **s, char **line, int fd);
-void				ft_size(t_node **s, int fd, char **line, size_t f);
-size_t				ft_r(int fd, ssize_t rd, t_node **s, char *buff);
 int					ft_atoi(const char *s);
 
 /*
@@ -43,6 +38,11 @@ int					ft_atoi(const char *s);
 ** directly to the memory block pointed to by dest.
 */
 
+void				ft_bzero(void *str, size_t n);
+char				*ft_strchr(const char *str, int ch);
+char				*ft_strjoin(const char *s1, const char *s2);
+char				*ft_strsub(const char *s, unsigned int start, size_t len);
+char				*ft_strcpy(char *dest, const char *src);
 void				*ft_memcpy(void *dest, const void *src, size_t n);
 char				*ft_strcat(char *dest, const char *src);
 void				*ft_memset(void *str, int c, size_t n);

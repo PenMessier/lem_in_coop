@@ -6,7 +6,7 @@
 #    By: Elena <Elena@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/10 13:36:52 by frenna            #+#    #+#              #
-#    Updated: 2020/04/27 19:06:33 by Elena            ###   ########.fr        #
+#    Updated: 2020/05/03 21:24:55 by Elena            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,11 @@ FLAGS = -Wall -Wextra -Werror
 INCLUDES = ./includes/
 
 SRC_NAMES = ft_atoi.c \
+		ft_bzero.c \
+		ft_strchr.c \
+		ft_strjoin.c \
+		ft_strcpy.c \
+		ft_strsub.c \
 		ft_count_words.c \
 		ft_free_array.c \
 		ft_is_sorted.c \
