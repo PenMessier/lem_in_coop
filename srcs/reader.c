@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 17:06:05 by Elena             #+#    #+#             */
-/*   Updated: 2020/04/28 18:39:37 by Elena            ###   ########.fr       */
+/*   Updated: 2020/05/08 11:47:02 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,12 @@ static void	reader(int fd)
 		{
 			free(start ? start : NULL);
 			free(end ? end : NULL);
+			free(input ? input : NULL);
 			return ;
 		}
 		free(input ? input : NULL);
 	}
-	if (f == 5)
-		write(fd, "\n\t],\n", 5);
+	f == 5 ? write(fd, "\n\t],\n", 5) : 0;
 	if (start && end)
 		write_start_end(fd, start, end);
 }

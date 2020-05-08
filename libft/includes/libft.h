@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 17:21:32 by frenna            #+#    #+#             */
-/*   Updated: 2020/05/04 13:15:57 by Elena            ###   ########.fr       */
+/*   Updated: 2020/05/08 11:47:22 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,13 @@
 
 # define BUFF_SIZE 10
 
-typedef struct		s_kor
+typedef	struct		s_node
 {
+	char			*content;
 	int				fd;
-	char			*line;
-	struct s_kor	*next;
-}					t_kor;
+	size_t			content_size;
+	struct s_node	*next;
+}					t_node;
 
 int					get_next_line(const int fd, char **line);
 int					ft_atoi(const char *s);

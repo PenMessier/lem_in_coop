@@ -1,1 +1,1 @@
-leaks --atExit -- ./lem-in < $1
+leaks --atExit -- ./lem-in < $@
