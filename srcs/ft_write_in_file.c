@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/23 09:26:27 by Elena             #+#    #+#             */
-/*   Updated: 2020/04/28 18:34:43 by Elena            ###   ########.fr       */
+/*   Updated: 2020/05/10 09:26:04 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static int	valid_input(char *input, int *f)
 	if (*f == 2)
 	{
 		*f = ft_atoi(input);
-		if (f < 0 || ft_strcmp((tmp = ft_itoa(*f)), input))
+		if (*f < 0 || ft_strcmp((tmp = ft_itoa(*f)), input))
 		{
 			free(tmp ? tmp : NULL);
 			return (0);

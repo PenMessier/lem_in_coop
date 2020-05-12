@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 10:45:07 by frenna            #+#    #+#             */
-/*   Updated: 2020/05/08 11:07:13 by Elena            ###   ########.fr       */
+/*   Updated: 2020/05/10 10:05:59 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ void				ft_size(t_node **s, int fd, char **line, size_t f)
 ** puts the rest of buffer content there.
 */
 
-size_t				ft_r(int fd, ssize_t rd, t_node **s, char *buff)
+size_t				ft_r(int fd, t_node **s, char *buff)
 {
 	char			*tmp;
 	char			*curr;
@@ -136,6 +136,7 @@ size_t				ft_r(int fd, ssize_t rd, t_node **s, char *buff)
 
 	i = 1;
 	tmp = buff;
+	curr = buff;
 	if (ft_strrchr(buff, '\n'))
 	{
 		while (*tmp)
@@ -152,8 +153,6 @@ size_t				ft_r(int fd, ssize_t rd, t_node **s, char *buff)
 		(*tmp - *curr != 0) ? ft_init(s, curr, fd, i) : 0;
 		return (1);
 	}
-	else
-		ft_init(s, buff, fd, rd);
 	return (0);
 }
 
@@ -171,7 +170,8 @@ int					get_next_line(const int fd, char **line)
 	while (f == 0 && (buff = ft_strnew(BUFF_SIZE))
 	&& (rd = read(fd, (void *)buff, BUFF_SIZE)))
 	{
-		f = ft_r(fd, rd, &s, buff);
+		if (!(f = ft_r(fd, &s, buff)))
+			ft_init(&s, buff, fd, rd);
 		ft_strdel(&buff);
 	}
 	buff ? ft_strdel(&buff) : 0;

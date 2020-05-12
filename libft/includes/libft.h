@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 17:21:32 by frenna            #+#    #+#             */
-/*   Updated: 2020/05/08 11:47:22 by Elena            ###   ########.fr       */
+/*   Updated: 2020/05/10 10:05:38 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,21 @@ typedef	struct		s_node
 	struct s_node	*next;
 }					t_node;
 
+/*
+** Get next line functions
+*/
+void				ft_init(t_node **s, char *content, int fd, size_t c_size);
+void				ft_line(t_node **s, char **line, int fd);
+void				ft_size(t_node **s, int fd, char **line, size_t f);
+size_t				ft_r(int fd, t_node **s, char *buff);
 int					get_next_line(const int fd, char **line);
-int					ft_atoi(const char *s);
 
 /*
 ** Copies the values of n bytes from the location pointed to by src
 ** directly to the memory block pointed to by dest.
 */
 
+int					ft_atoi(const char *s);
 void				ft_bzero(void *str, size_t n);
 char				*ft_strchr(const char *str, int ch);
 char				*ft_strjoin(const char *s1, const char *s2);

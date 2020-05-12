@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 12:14:32 by frenna            #+#    #+#             */
-/*   Updated: 2020/04/28 20:56:08 by Elena            ###   ########.fr       */
+/*   Updated: 2020/05/10 11:04:15 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ t_room		*create_new_room(int x, int y, int li, char *name)
 
 t_room		*find_room(t_room *rooms, char *name)
 {
+	if (name == NULL)
+		return (NULL);
 	while (rooms)
 	{
 		if (!ft_strcmp(rooms->name, name))
@@ -70,7 +72,7 @@ int			add_room(t_room *new, t_map *map, int *nl)
 	t_room	*curr;
 
 	if (!new)
-		return (-5);
+		return (ALLOCERR);
 	if (*nl == 0 || *nl == 1)
 		write_data(new, map, nl);
 	*nl = 3;

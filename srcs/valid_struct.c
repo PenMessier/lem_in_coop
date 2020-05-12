@@ -6,7 +6,7 @@
 /*   By: Elena <Elena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 13:03:48 by frenna            #+#    #+#             */
-/*   Updated: 2020/04/29 09:36:27 by Elena            ###   ########.fr       */
+/*   Updated: 2020/05/10 11:12:09 by Elena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int			valid_link(char *input, t_map *map)
 	if (!find_double_link(map->links, start, end))
 		return (-13);
 	if (!add_link(&map->links, start, end))
-		return (-5);
+		return (ALLOCERR);
 	return (1);
 }
 
